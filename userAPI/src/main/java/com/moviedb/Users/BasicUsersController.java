@@ -22,7 +22,7 @@ public class BasicUsersController {
         return usersRepository.findAll();
     }
 
-    @GetMapping("/user/{username}")
+    @GetMapping("/users/{username}")
     public User findByUsername(@PathVariable("username") String username){
         return usersRepository.findByUsername(username);
     }
