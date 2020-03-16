@@ -22,7 +22,7 @@ public class User {
     @Column(name="password", nullable = false)
     private String password;
 
-    @Column(name="avatarUrl", nullable = false)
+    @Column(name="avatar_url", nullable = false)
     private String avatarUrl;
 
     public int getId() {
