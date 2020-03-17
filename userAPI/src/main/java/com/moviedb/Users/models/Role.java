@@ -1,0 +1,65 @@
+package com.moviedb.Users.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "roles")
+public class Role {
+    public Role(){}
+
+    public Role(String type){
+        this.type = type;
+        users = new ArrayList<User>();
+    }
+
+    public Role(String type, List<User> users){
+        this.users = users;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
+    private Integer id;
+
+    @Column(name = "type")
+    private String type;
+
+    @OneToMany(targetEntity = User.class, mappedBy = "role", fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = "role", allowSetters = true)
+    private List<User> users;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getType(){
+        return type;
+    }
+
+    public void setType(String type){
+        this.type = type;
+    }
+
+    public List<User> getUsers(){
+        return users;
+    }
+
+    public void setUsers(List<User> users){
+        this.users = users;
+    }
+
+    public void addUser(User user){
+        users.add(user);
+    }
+
+    @Override
+    public String toString(){
+        return String.format(
+                "Role[id=%d, type='%s']",
+                id, type);
+    }
+}
