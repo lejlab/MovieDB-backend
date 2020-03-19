@@ -21,10 +21,15 @@ public class MoviesController {
     public List<Movie> find(){
         return moviesRepository.findAll();
     }
-/*
-    @GetMapping("/movies/{id}")
-    public List<Movie> findByOwnerUserId(@PathVariable("id") String id){
-        Integer userOwnerId = parseInt(id);
-        return moviesRepository.findByOwnerUserId(userOwnerId);
-    }*/
+    
+    @GetMapping("/")
+    public String index(){
+        return ("movies, movies/{title}}");
+    }
+
+
+    @GetMapping("/movies/{title}")
+    public Movie findByTitle(@PathVariable("title") String title){
+        return moviesRepository.findByTitle(title);
+    }
 }

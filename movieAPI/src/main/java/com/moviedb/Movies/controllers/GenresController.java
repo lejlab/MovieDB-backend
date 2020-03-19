@@ -19,10 +19,15 @@ public class GenresController {
     public List<Genre> find(){
         return genresRepository.findAll();
     }
-/*
-    @GetMapping("/movies/{id}")
-    public List<Movie> findByOwnerUserId(@PathVariable("id") String id){
-        Integer userOwnerId = parseInt(id);
-        return moviesRepository.findByOwnerUserId(userOwnerId);
-    }*/
+    
+    @GetMapping("/")
+    public String index(){
+        return ("genres, genres/{name}}");
+    }
+
+
+    @GetMapping("/genres/{name}")
+    public Genre findByName(@PathVariable("name") String name){
+        return genresRepository.findByName(name);
+    }
 }
