@@ -1,8 +1,15 @@
 package com.moviedb.UserPreferences.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,16 +29,25 @@ public class Watchlist {
     @Column(name = "watchlist_id")
     private Integer id;
 
-    @Column(name = "user_id", nullable = false)
+    @NotNull(message = "UserId must not be null.")
+    @Min(value = 1, message = "UserId must be positive.")
+    @Column(name = "user_id")
     private Integer userId;
 
-    @Column(name = "movie_id", nullable = false)
+    @NotNull(message = "MovieId must not be null.")
+    @Min(value = 1, message = "MovieId must be positive")
+    @Column(name = "movie_id")
     private Integer movieId;
 
-    @Column(name = "is_public", nullable = false)
+    @NotNull(message = "IsPublic must not be empty.")
+    @Column(name = "is_public")
     private boolean isPublic;
 
-    @Column(name = "created_at", nullable = false)
+    @NotNull(message = "CreatedAt must not be null.")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     public Integer getId() {
