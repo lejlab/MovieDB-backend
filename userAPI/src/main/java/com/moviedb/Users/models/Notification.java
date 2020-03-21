@@ -3,6 +3,8 @@ package com.moviedb.Users.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "notifications")
@@ -24,6 +26,9 @@ public class Notification {
     @JoinColumn(name = "owner_user_id", nullable = false)
     private User ownerUser;
 
+    @NotNull(message = "Message must not be empty.")
+    @Size(max = 200, message = "Message must not be longer than 200 characters.")
+    @Column(name = "message")
     private String message;
 
     public Integer getId(){

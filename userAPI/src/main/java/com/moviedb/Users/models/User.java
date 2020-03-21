@@ -5,6 +5,8 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -23,13 +25,19 @@ public class User {
     @Column(name = "user_id")
     private Integer id;
 
-    @Column(name="username", nullable = false)
+    @NotNull(message = "Username must not be empty.")
+    @Size(max = 50, message = "Username must not be longer than 50 characters.")
+    @Column(name="username")
     private String username;
 
-    @Column(name="password", nullable = false)
+    @NotNull(message = "Password must not be empty.")
+    @Size(max = 100, message = "Password must not be longer than 100 characters.")
+    @Column(name="password")
     private String password;
 
-    @Column(name="avatar_url", nullable = false)
+    @NotNull(message = "AvatarUrl must not be empty.")
+    @Size(max = 200, message = "AvatarUrl must not be longer than 200 characters.")
+    @Column(name="avatar_url")
     private String avatarUrl;
 
     @ManyToOne

@@ -3,6 +3,8 @@ package com.moviedb.Users.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class Role {
     @Column(name = "role_id")
     private Integer id;
 
+    @NotNull(message = "Type must not be empty.")
+    @Size(max = 30, message = "Type must not be longer than 30 characters.")
     @Column(name = "type")
     private String type;
 

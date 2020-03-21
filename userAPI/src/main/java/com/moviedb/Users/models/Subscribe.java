@@ -3,6 +3,7 @@ package com.moviedb.Users.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "subscribe")
@@ -19,11 +20,13 @@ public class Subscribe {
     @Column(name = "subscribe_id")
     private Integer id;
 
+    @NotNull(message = "SubscribedUser must not be empty.")
     @ManyToOne
     @JsonIgnoreProperties(value = "owners", allowSetters = true)
     @JoinColumn(name = "subscribed_user_id", nullable = false)
     private User subscribedUser;
 
+    @NotNull(message = "OwnerUser must not be empty.")
     @ManyToOne
     @JsonIgnoreProperties(value = "subscribers", allowSetters = true)
     @JoinColumn(name = "owner_user_id", nullable = false)

@@ -29,51 +29,6 @@ public class UsersApplication {
 	@Bean
 	public CommandLineRunner demo(UsersRepository usersRepository, RolesRepository rolesRepository, SubscriptionsRepository subscriptionsRepository, NotificationsRepository notificationsRepository) {
 		return (args) -> {
-			/* testni kod za unos i dohvaćanje
-			List<Role> roles = rolesRepository.findAll();
-			List<User> users = usersRepository.findAll();
-
-			User U1 = new User("testname", "testpw", "testurl");
-			User U2 = new User("testname12344", "testpw1", "testurl11");
-
-			Role R = new Role("roletype124");
-
-			List<User> newUsers = new ArrayList<User>();
-
-			newUsers.add(U1);
-			newUsers.add(U2);
-
-			U1.setRole(R);
-			U2.setRole(R);
-
-			R.setUsers(newUsers);
-			rolesRepository.save(R);
-
-			usersRepository.save(U1);
-			usersRepository.save(U2);
-
-			if (roles != null && users != null) {
-				users.forEach(user -> {
-					user.setRole(roles.get(0));
-					usersRepository.save(user);
-				});
-
-				roles.get(0).setUsers(users);
-				rolesRepository.save(roles.get(0));
-			}
-
-			List<User> users = repository.findAll();
-			Subscribe S = new Subscribe(users.get(0), users.get(1));
-
-			subscriptionsRepository.save(S);
-
-			List<User> users = usersRepository.findAll();
-			Notification N = new Notification("Notifikacija prvog usera iz liste...", users.get(0));
-			notificationsRepository.save(N);
-
-			 */
-
-
 			log.info("Dohvatanje svih redova users: ");
 			for (User user : usersRepository.findAll()) {
 				log.info(user.toString());
