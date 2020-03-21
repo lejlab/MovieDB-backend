@@ -19,59 +19,59 @@ public class Movie {
     @Column(name = "title")
     @NotBlank(message = "Title is mandatory")
     private String title;
-    
-    @Column(name = "releaseDate")
+
+    @Column(name = "release_date")
     private Date releaseDate;
-    
-    @Column(name = "boxOffice")
+
+    @Column(name = "box_office")
     @PositiveOrZero(message="Box office must be nonnegative")
     private double boxOffice;
-    
+
     @ManyToMany(mappedBy = "movies")
     private Set<Genre> genres;
-    
-    
-    public Movie () {}    
-    
-    
+
+
+    public Movie () {}
+
+
     public Integer getId() {
         return id;
-    }    
-    
+    }
+
     public String getTitle() {
         return title;
     }
-    
+
     public void setTitle(String title) {
         this.title = title;
     }
-    
+
     public Date getReleaseDate() {
         return releaseDate;
     }
-    
+
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
-    
+
     public double getBoxOffice() {
         return boxOffice;
     }
-    
+
     public void setBoxOffice(double boxOffice) {
         this.boxOffice = boxOffice;
     }
-    
+
     public Set<Genre> getGenres() {
         return genres;
     }
-    
+
     public void setGenres(Set<Genre> genres) {
         this.genres = genres;
     }
 
-    
-    
-    
-    
+
+
+
+
 }

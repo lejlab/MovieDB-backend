@@ -17,16 +17,15 @@ public class MoviesController {
     @Autowired
     MoviesRepository moviesRepository;
 
+    @GetMapping("/")
+    public String index(){
+        return ("movies, movies/{title}, genres, genres/{name}");
+    }
+
     @GetMapping("/movies")
     public List<Movie> find(){
         return moviesRepository.findAll();
     }
-    
-    @GetMapping("/")
-    public String index(){
-        return ("movies, movies/{title}}");
-    }
-
 
     @GetMapping("/movies/{title}")
     public Movie findByTitle(@PathVariable("title") String title){

@@ -19,12 +19,6 @@ public class GenresController {
     public List<Genre> find(){
         return genresRepository.findAll();
     }
-    
-    @GetMapping("/")
-    public String index(){
-        return ("genres, genres/{name}}");
-    }
-
 
     @GetMapping("/genres/{name}")
     public Genre findByName(@PathVariable("name") String name){
