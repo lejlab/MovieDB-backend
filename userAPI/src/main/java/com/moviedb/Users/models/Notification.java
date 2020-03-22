@@ -23,7 +23,7 @@ public class Notification {
 
     @ManyToOne
     @JsonIgnoreProperties(value = "notifications", allowSetters = true)
-    @JoinColumn(name = "owner_user_id", nullable = false)
+    @JoinColumn(name = "owner_user_id")
     private User ownerUser;
 
     @NotNull(message = "Message must not be empty.")
@@ -50,7 +50,6 @@ public class Notification {
     public void setMessage(String message) {
         this.message = message;
     }
-
 
     @Override
     public String toString(){

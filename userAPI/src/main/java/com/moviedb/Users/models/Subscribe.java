@@ -23,13 +23,13 @@ public class Subscribe {
     @NotNull(message = "SubscribedUser must not be empty.")
     @ManyToOne
     @JsonIgnoreProperties(value = "owners", allowSetters = true)
-    @JoinColumn(name = "subscribed_user_id", nullable = false)
+    @JoinColumn(name = "subscribed_user_id")
     private User subscribedUser;
 
     @NotNull(message = "OwnerUser must not be empty.")
     @ManyToOne
     @JsonIgnoreProperties(value = "subscribers", allowSetters = true)
-    @JoinColumn(name = "owner_user_id", nullable = false)
+    @JoinColumn(name = "owner_user_id")
     private User ownerUser;
 
     public Integer getId() {
