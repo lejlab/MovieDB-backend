@@ -117,6 +117,7 @@
     **Content:** `{ id : 1, username : username, password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], subscriber: User[], notifications: Notification[]}`
  
 * **Error Response:**
+  * **Code:** 500 <br />
     
 * **Sample Call:**
   * **Success:**
