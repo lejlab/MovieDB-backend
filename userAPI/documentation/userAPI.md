@@ -84,5 +84,5 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./UsersPostman/GetUserByUsernameSuccess.png)
+  ![image info](./UsersPostman/GetUsersByUsernameSuccess.png)
 
