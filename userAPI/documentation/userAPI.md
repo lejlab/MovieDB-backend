@@ -21,6 +21,6 @@
     **Content:** `{ message : "...", details : "..." }`
 
 * **Sample Call:**
-![GitHub Logo](/UsersPostman/GetUsersSuccess.png)
+![logo2](/UsersPostman/GetUsersSuccess.png)
 Format: ![Alt Text](url)
   ```
