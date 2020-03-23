@@ -41,24 +41,50 @@
  
    `id=[integer]`
 
-* **Data Params**
-
-  None
-
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ id : 1, username : "test_username", password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], notifications: User[]}`
+    **Content:** `{ id : id, username : "test_username", password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], notifications: User[]}`
  
 * **Error Response:**
 
   * **Code:** 500 Internal Server Error <br />
     **Content:** `{ message : "Could not find user with ID = :id." }`
-
-  OR
-
-  * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "You are unauthorized to make this request." }`
     
 * **Sample Call:**
 ![image info](./UsersPostman/GetUserByUserIdObjectJson.png)
+
+**GET user by username**
+----
+  Returns json data about a single user found by username.
+
+* **URL**
+
+  /users/:username
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `username=[String]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : 1, username : username, password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], notifications: User[]}`
+ 
+* **Error Response:**
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "Could not find user with username = :username." }`
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./UsersPostman/GetUserByUsernameSuccess.png)
+  * **Error: **
+    ![image info](./UsersPostman/GetUserByUsernameFail.png)
+
