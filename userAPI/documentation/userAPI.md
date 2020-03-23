@@ -21,5 +21,5 @@
     **Content:** `{ message : "...", details : "..." }`
 
 * **Sample Call:**
-![logo2](./UsersPostman/GetUsersSuccess.png)
+![image info](./UsersPostman/GetUsersSuccess.png)
   ```
