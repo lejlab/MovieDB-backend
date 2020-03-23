@@ -22,5 +22,4 @@
 
 * **Sample Call:**
 ![logo2](./UsersPostman/GetUsersSuccess.png)
-Format: ![Alt Text](url)
   ```
