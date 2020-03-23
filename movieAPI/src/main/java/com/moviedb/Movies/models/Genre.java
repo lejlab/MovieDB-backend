@@ -1,6 +1,9 @@
 package com.moviedb.Movies.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -28,6 +31,11 @@ public class Genre {
 
 
     public Genre () {}
+
+    public Genre (String name)
+    {
+        this.name = name;
+    }
 
 
     public Integer getId() {
