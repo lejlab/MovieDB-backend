@@ -1,4 +1,4 @@
-package models;
+package com.moviedb.Celebs.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "celebs")
 public class Celeb {
+    public Celeb() {}
 
     public Celeb(@NotNull(message = "First name must not be empty.") @Size(max = 2, message = "First name must not be longer than 30 characters.") String first_name, @NotNull(message = "Last name must not be empty.") @Size(max = 2, message = "Last name must not be longer than 30 characters.") String last_name, @NotNull(message = "Date of birst must not be empty.") Date date_of_birth) {
         this.firstName = first_name;

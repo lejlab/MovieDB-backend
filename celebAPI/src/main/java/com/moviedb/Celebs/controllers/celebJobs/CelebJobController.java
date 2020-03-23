@@ -1,15 +1,12 @@
-package controllers;
+package com.moviedb.Celebs.controllers.celebJobs;
 
-import models.CelebJobs;
-import models.Job;
-import models.MovieCeleb;
+import com.moviedb.Celebs.models.CelebJobs;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import repositories.CelebJobsRepository;
+import com.moviedb.Celebs.repositories.CelebJobsRepository;
 
 import java.util.ArrayList;
 import java.util.List;

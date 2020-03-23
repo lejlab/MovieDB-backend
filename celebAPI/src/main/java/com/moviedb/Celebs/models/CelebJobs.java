@@ -1,4 +1,4 @@
-package models;
+package com.moviedb.Celebs.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "celeb_jobs")
 public class CelebJobs {
+    public CelebJobs() {}
 
     public CelebJobs(Integer id, @NotNull(message = "Job must not be empty.") Job job, @NotNull(message = "Celeb must not be empty.") Celeb celeb) {
         this.id = id;

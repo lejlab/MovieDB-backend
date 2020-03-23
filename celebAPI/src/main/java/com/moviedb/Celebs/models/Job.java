@@ -1,4 +1,4 @@
-package models;
+package com.moviedb.Celebs.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "jobs")
 public class Job {
+    public Job() {}
 
     public Job(@NotNull(message = "Title must not be empty.") @Size(max = 2, message = "Title must not be longer than 2 characters.") String title) {
         this.title = title;
@@ -28,7 +29,7 @@ public class Job {
     private String title;
 
     @OneToMany(targetEntity = CelebJobs.class, mappedBy = "job", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties(value = "jobs", allowSetters = true)
+    @JsonIgnoreProperties(value = "job", allowSetters = true)
     private List<CelebJobs> celebJobs;
 
     public Integer getId() {

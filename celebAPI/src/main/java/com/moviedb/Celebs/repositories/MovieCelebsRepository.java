@@ -1,7 +1,6 @@
-package repositories;
+package com.moviedb.Celebs.repositories;
 
-import models.CelebJobs;
-import models.MovieCeleb;
+import com.moviedb.Celebs.models.MovieCeleb;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

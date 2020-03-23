@@ -1,12 +1,11 @@
-package controllers;
+package com.moviedb.Celebs.controllers.celebs;
 
-import models.Celeb;
-import models.Job;
+import com.moviedb.Celebs.models.Celeb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import repositories.CelebsRepository;
+import com.moviedb.Celebs.repositories.CelebsRepository;
 
 import java.util.Date;
 import java.util.List;

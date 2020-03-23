@@ -1,19 +1,19 @@
 package com.moviedb.Celebs;
 
-import models.Celeb;
-import models.CelebJobs;
-import models.Job;
-import models.MovieCeleb;
+import com.moviedb.Celebs.models.Celeb;
+import com.moviedb.Celebs.models.CelebJobs;
+import com.moviedb.Celebs.models.Job;
+import com.moviedb.Celebs.models.MovieCeleb;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import repositories.CelebJobsRepository;
-import repositories.CelebsRepository;
-import repositories.JobsRepository;
-import repositories.MovieCelebsRepository;
+import com.moviedb.Celebs.repositories.CelebJobsRepository;
+import com.moviedb.Celebs.repositories.CelebsRepository;
+import com.moviedb.Celebs.repositories.JobsRepository;
+import com.moviedb.Celebs.repositories.MovieCelebsRepository;
 
 @SpringBootApplication
 public class CelebsApplication {
