@@ -1,41 +1,50 @@
 package com.moviedb.Movies.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "genres")
 public class Genre {
 
+
+
+    public Genre () {}
+
+    public Genre(String name){
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "genre_id")
     private Integer id;
 
+    @NotNull(message = "Genre name must not be empty.")
     @Size(min = 2, message = "Genre name must have at least 2 characters ")
     @Column(name = "name")
     private String name;
-
+/*
     @ManyToMany
     @JoinTable(
             name = "genre_movie",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
-    private Set<Movie> movies;
+    private Set<Movie> movies;*/
 
 
-    public Genre () {}
+    @OneToMany(targetEntity = GenreMovie.class, mappedBy = "genre", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = "ownerUser", allowSetters = true)
+    private List<GenreMovie> movies;
 
-    public Genre (String name)
-    {
-        this.name = name;
-    }
 
 
     public Integer getId() {
@@ -50,11 +59,20 @@ public class Genre {
         this.name = name;
     }
 
-    public Set<Movie> getMovies() {
+    public List<GenreMovie> getMovies() {
         return movies;
     }
 
-    public void setMovies(Set<Movie> movies) {
+    public void setMovies(List<GenreMovie> movies) {
         this.movies = movies;
+    }
+
+    @Override
+    public String toString(){
+        return String.format(
+                "Genre[id=%d, name=%s]",
+                id, name
+        );
+
     }
 }

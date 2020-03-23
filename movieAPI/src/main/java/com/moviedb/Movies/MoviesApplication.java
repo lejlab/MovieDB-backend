@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Bean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Date;
+
 @SpringBootApplication
 public class MoviesApplication {
 	private static final Logger log = LoggerFactory.getLogger(MoviesApplication.class);
@@ -24,6 +26,11 @@ public class MoviesApplication {
 	@Bean
 	public CommandLineRunner demo(MoviesRepository moviesRepository, GenresRepository genresRepository) {
 		return (args) -> {
+			Movie movieTest = new Movie("Mad max",new Date(),200000);
+			moviesRepository.save(movieTest);
+
+			Genre genreTest = new Genre("Triler");
+			genresRepository.save(genreTest);
 
 			log.info("Dohvatanje svih redova movies: ");
 			for (Movie movie : moviesRepository.findAll()) {
@@ -36,4 +43,5 @@ public class MoviesApplication {
 			}
 		};
 	}
+
 }
