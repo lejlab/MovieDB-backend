@@ -125,7 +125,7 @@
  
  
  
- * **Show Jobs**
+**Show Jobs**
 ----
   Returns json data about all jobs.
 
@@ -165,10 +165,7 @@
 
   
   
- 
- 
- 
- * **Show celeb_jobs**
+**Show celeb_jobs**
 ----
   Returns json data about all celeb_jobs.
 
@@ -210,10 +207,7 @@
 
   
   
- 
- 
- 
- * **Show celeb_jobs**
+**Show celeb_jobs**
 ----
   Returns json data about celeb_jobs with some celebID.
 
@@ -264,10 +258,7 @@
 
   
   
- 
- 
- 
- * **Show celeb_jobs**
+**Show celeb_jobs**
 ----
   Returns json data about celeb_jobs with some jobID.
 
@@ -319,8 +310,7 @@
     
 
  
- 
- * **Show movie_celebs**
+**Show movie_celebs**
 ----
   Returns json data about all movie_celebs.
 
@@ -360,8 +350,7 @@
   
  
  
- 
- * **Show movie_celebs**
+**Show movie_celebs**
 ----
   Returns json data about movie_celebs with some celebID.
 
@@ -408,8 +397,7 @@
     
 
  
- 
- * **Show movie_celebs**
+**Show movie_celebs**
 ----
   Returns json data about movie_celebs with some movieID.
 
