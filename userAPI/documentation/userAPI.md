@@ -86,3 +86,32 @@
   * **Success:**
   ![image info](./UsersPostman/GetUsersByUsernameSuccess.png)
 
+**ADD new user**
+----
+  Returns json data about a single user added by API call.
+
+* **URL**
+
+  /users
+
+* **Method:**
+
+  `POST`
+  
+*  **Data params: **
+   **Required:**
+ 
+   `username=[String]`
+   `password=[String]`
+   `avatarUrl=[String]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : 1, username : username, password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], notifications: User[]}`
+ 
+* **Error Response:**
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./UsersPostman/PostUsersSuccess.png)
