@@ -85,6 +85,4 @@
 * **Sample Call:**
   * **Success:**
   ![image info](./UsersPostman/GetUserByUsernameSuccess.png)
-  * **Error: **
-    ![image info](./UsersPostman/GetUserByUsernameFail.png)
 
