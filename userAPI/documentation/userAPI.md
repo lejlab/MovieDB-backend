@@ -122,3 +122,47 @@
 * **Sample Call:**
   * **Success:**
   ![image info](./UsersPostman/PostUsersSuccess.png)
+  
+  **EDIT existing user**
+----
+  Returns json data about a single user edited by API call.
+
+* **URL**
+
+  /users
+
+* **Method:**
+
+  `PUT`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+  
+* **Data params: **
+   * **Required: ** 
+ 
+   `username=[String]`
+   `password=[String]`
+   `avatarUrl=[String]`
+
+  * **Optional: **
+    `role=[Role]`
+    `owners=[User[]]`
+    `subscribers=[User[]]`
+    `notifications=[Notification[]]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : 1, username : username, password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], subscriber: User[], notifications: Notification[]}`
+ 
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./UsersPostman/UpdateUserSuccess.png)
+  
+   * **Success (ID not found): **
+  ![image info](./UsersPostman/UpdateUserSuccessNotFounded.png)
