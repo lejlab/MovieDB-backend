@@ -3,8 +3,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.aspectj.weaver.ast.Not;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -42,19 +45,19 @@ public class User {
 
     @ManyToOne
     @JsonIgnoreProperties(value = "users", allowSetters = true)
-    @JoinColumn(name = "role_id", nullable = false)
+    @JoinColumn(name = "role_id")
     private Role role;
 
-    @OneToMany(targetEntity = Subscribe.class, mappedBy = "ownerUser", fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Subscribe.class, mappedBy = "ownerUser", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = "ownerUser", allowSetters = true)
     private List<Subscribe> subscribers;
 
-    @OneToMany(targetEntity = Subscribe.class, mappedBy = "subscribedUser", fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Subscribe.class, mappedBy = "subscribedUser", fetch = FetchType.LAZY)
     @Fetch(value = FetchMode.SUBSELECT)
     @JsonIgnoreProperties(value = "subscribedUser", allowSetters = true)
     private List<Subscribe> owners;
 
-    @OneToMany(targetEntity = Notification.class, mappedBy = "ownerUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Notification.class, mappedBy = "ownerUser", fetch = FetchType.LAZY)
     @Fetch(value = FetchMode.SUBSELECT)
     @JsonIgnoreProperties(value = "ownerUser", allowSetters = true)
     private List<Notification> notifications;

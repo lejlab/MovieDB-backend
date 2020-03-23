@@ -32,7 +32,7 @@ public class Role {
     @Column(name = "type")
     private String type;
 
-    @OneToMany(targetEntity = User.class, mappedBy = "role", fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = User.class, mappedBy = "role", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = "role", allowSetters = true)
     private List<User> users;
 

@@ -4,8 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.moviedb.Users.models.Role;
 
+import java.util.Optional;
+
 @Repository
 public interface RolesRepository extends JpaRepository<Role, Integer> {
-    Role findByType(String type);
+    Optional<Role> findByType(String type);
 }
 
