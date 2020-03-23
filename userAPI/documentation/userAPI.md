@@ -166,3 +166,37 @@
   
   * **Success (ID not found):**
   ![image info](./UsersPostman/UpdateUserSuccessNotFounded.png)
+  
+ **DELETE user by ID**
+----
+  Deletes user found by ID.
+
+* **URL**
+
+  /users/:id
+
+* **Method:**
+
+  `DELETE`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+ 
+* **Error Response:**
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "Could not find user with ID = :id." }`
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./UsersPostman/DeleteUserSuccess.png)
+  * **Error:**
+  ![image info](./UsersPostman/DeleteUserFail.png)
+  
