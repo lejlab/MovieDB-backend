@@ -21,6 +21,6 @@
     **Content:** `{ message : "...", details : "..." }`
 
 * **Sample Call:**
-![logo2](/UsersPostman/GetUsersSuccess.png)
+![logo2](./UsersPostman/GetUsersSuccess.png)
 Format: ![Alt Text](url)
   ```
