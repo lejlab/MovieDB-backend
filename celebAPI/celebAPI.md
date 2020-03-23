@@ -1,10 +1,10 @@
-**Show User**
+**Show Celebs**
 ----
   Returns json data about a single user.
 
 * **URL**
 
-  /users/:id
+  /users
 
 * **Method:**
 
@@ -14,7 +14,7 @@
 
    **Required:**
  
-   `id=[integer]`
+   None
 
 * **Data Params**
 
@@ -23,27 +23,16 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ id : 12, name : "Michael Bloom" }`
+    **Content:** `{ id : 2, firstName : "Brad", lastName : "Pitt" }`
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "User doesn't exist" }`
-
-  OR
-
-  * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "You are unauthorized to make this request." }`
+ Not tested
 
 * **Sample Call:**
 
-  ```javascript
-    $.ajax({
-      url: "/users/1",
-      dataType: "json",
-      type : "GET",
-      success : function(r) {
-        console.log(r);
-      }
-    });
-  ```
+ @GetMapping("/celebs")
+    public List<Celeb> find() {
+        return celebsRepository.findAll();
+    }
+ 
