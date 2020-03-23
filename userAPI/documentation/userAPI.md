@@ -255,5 +255,5 @@
     **Content:** `{ message : "Could not find user with ID = :id." }`
     
 * **Sample Call:**
-![image info](./UsersPostman/GetRoleByIdSuccess.png)
+![image info](./RolesPostman/GetRoleByIdSuccess.png)
   
