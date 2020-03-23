@@ -70,7 +70,7 @@
 
    **Required:**
  
-   `username=[String]`
+   `username=[string]`
 
 * **Success Response:**
 
@@ -101,9 +101,9 @@
 * **Data params: **
    * **Required: ** 
  
-   `username=[String]`
-   `password=[String]`
-   `avatarUrl=[String]`
+   `username=[string]`
+   `password=[string]`
+   `avatarUrl=[string]`
 
   * **Optional: **
     `role=[Role]`
@@ -144,9 +144,9 @@
 * **Data params: **
    * **Required: ** 
  
-   `username=[String]`
-   `password=[String]`
-   `avatarUrl=[String]`
+   `username=[string]`
+   `password=[string]`
+   `avatarUrl=[string]`
 
   * **Optional: **
     `role=[Role]`
@@ -259,4 +259,38 @@
   ![image info](./RolesPostman/GetRoleByIdSuccess.png)
   * **Error:**
   ![image_info](./RolesPostman/GetRoleByIdFail.png)
+  
+**GET role by ID**
+----
+  Returns json data about a single role found by ID.
+
+* **URL**
+
+  /roles/identification/:type
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `type=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : 1, type: :type", users: User[]}`
+ 
+* **Error Response:**
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "Could not find user with type = :type." }`
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./RolesPostman/GetRoleByTypeSuccess.png)
+  * **Error:**
+  ![image_info](./RolesPostman/GetRoleByTypeFail.png)
   
