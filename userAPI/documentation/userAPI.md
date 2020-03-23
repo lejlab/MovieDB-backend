@@ -99,13 +99,13 @@
   `POST`
   
 * **Data params: **
-   **Required: ** 
+   * **Required: ** 
  
    `username=[String]`
    `password=[String]`
    `avatarUrl=[String]`
 
-  **Optional: **
+  * **Optional: **
     `role=[Role]`
     `owners=[User[]]`
     `subscribers=[User[]]`
