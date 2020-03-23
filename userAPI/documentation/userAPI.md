@@ -13,7 +13,7 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `[{ id : 1, username : "test_username", password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], notifications: User[]}, ...]`
+    **Content:** `[{ id : 1, username : username, password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], subscriber: User[], notifications: Notification[]}, ...]`
  
 * **Error Response:**
   
@@ -44,7 +44,7 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ id : id, username : "test_username", password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], notifications: User[]}`
+    **Content:** `{ id : 1, username : username, password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], subscriber: User[], notifications: Notification[]}`
  
 * **Error Response:**
 
@@ -75,7 +75,7 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ id : 1, username : username, password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], notifications: User[]}`
+    **Content:** `{ id : 1, username : username, password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], subscriber: User[], notifications: Notification[]}`
  
 * **Error Response:**
 
@@ -98,17 +98,23 @@
 
   `POST`
   
-*  **Data params: **
-   **Required:**
+* **Data params: **
+   **Required: ** 
  
    `username=[String]`
    `password=[String]`
    `avatarUrl=[String]`
 
+  **Optional: **
+    `role=[Role]`
+    `owners=[User[]]`
+    `subscribers=[User[]]`
+    `notifications=[Notification[]]`
+
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ id : 1, username : username, password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], notifications: User[]}`
+    **Content:** `{ id : 1, username : username, password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], subscriber: User[], notifications: Notification[]}`
  
 * **Error Response:**
     
