@@ -200,3 +200,28 @@
   * **Error:**
   ![image info](./UsersPostman/DeleteUserFail.png)
   
+**GET all roles**
+----
+  Returns json array data about all role records in database.
+
+* **URL**
+
+  /roles
+
+* **Method:**
+
+  `GET`
+  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `[{ id : 1, type: "rolename", users: User[]}, ...]`
+ 
+* **Error Response:**
+  
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "...", details : "..." }`
+
+* **Sample Call:**
+![image info](./RolesPostman/GetRoles.png)
+  
