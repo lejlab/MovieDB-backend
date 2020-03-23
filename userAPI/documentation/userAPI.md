@@ -224,4 +224,36 @@
 
 * **Sample Call:**
 ![image info](./RolesPostman/GetRoles.png)
+
+
+**GET role by ID**
+----
+  Returns json data about a single role found by ID.
+
+* **URL**
+
+  /roles/:id
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : id, type: "rolename", users: User[]}`
+ 
+* **Error Response:**
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "Could not find user with ID = :id." }`
+    
+* **Sample Call:**
+![image info](./UsersPostman/GetRoleByIdSuccess.png)
   
