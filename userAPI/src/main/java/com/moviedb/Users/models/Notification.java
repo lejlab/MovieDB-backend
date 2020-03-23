@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "notifications")
-public class Notification {
+public class  Notification {
     public Notification () {}
 
     public Notification (String message, User ownerUser) {
