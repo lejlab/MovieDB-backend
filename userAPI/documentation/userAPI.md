@@ -35,7 +35,7 @@
 
   `GET`
   
-*  **URL Params**
+*  **Path variables**
 
    **Required:**
  
@@ -66,7 +66,7 @@
 
   `GET`
   
-*  **URL Params**
+*  **Path variables**
 
    **Required:**
  
@@ -135,7 +135,7 @@
 
   `PUT`
   
-*  **URL Params**
+*  **Path variables**
 
    **Required:**
  
@@ -179,7 +179,7 @@
 
   `DELETE`
   
-*  **URL Params**
+*  **Path variables**
 
    **Required:**
  
@@ -238,7 +238,7 @@
 
   `GET`
   
-*  **URL Params**
+*  **Path variables**
 
    **Required:**
  
@@ -260,9 +260,9 @@
   * **Error:**
   ![image_info](./RolesPostman/GetRoleByIdFail.png)
   
-**GET role by ID**
+**GET role by type**
 ----
-  Returns json data about a single role found by ID.
+  Returns json data about a single role found by type.
 
 * **URL**
 
@@ -272,7 +272,7 @@
 
   `GET`
   
-*  **URL Params**
+*  **Path variables**
 
    **Required:**
  
