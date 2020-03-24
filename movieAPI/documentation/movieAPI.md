@@ -21,7 +21,7 @@
     **Content:** `{ message : "...", details : "..." }`
 
 * **Sample Success Call:**
-![image info](./MoviesPostman/GetMoviesSuccess.png)
+![image info](./MoviesPostman/getMoviesSuccess.png)
 
 **GET movie by ID**
 ----
@@ -90,10 +90,10 @@
     
 * **Sample Call:**
   * **Error:**
-  ![image info](./MoviesPostman/AddMovieFail.png)
+  ![image info](./MoviesPostman/addMovieFail.png)
   
   * **Success:**
-  ![image info](./MoviesPostman/AddMovieSuccess.png)
+  ![image info](./MoviesPostman/addMovieSuccess.png)
   
   **EDIT existing user**
 ----
@@ -131,10 +131,10 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./MoviesPostman/PutMovieSuccess.png)
+  ![image info](./MoviesPostman/putMovieSuccess.png)
   
   * **Error:**
-  ![image info](./MoviesPostman/PutMovieFail.png)
+  ![image info](./MoviesPostman/putMovieFail.png)
   
  **DELETE movie by ID**
 ----
@@ -165,9 +165,9 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./MoviesPostman/DeleteMovieSuccess.png)
+  ![image info](./MoviesPostman/deleteMovieSuccess.png)
   * **Error:**
-  ![image info](./MoviesPostman/DeleteMovieFail.png)
+  ![image info](./MoviesPostman/deleteMovieFail.png)
   
 **GET all genres**
 ----
@@ -225,9 +225,9 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./GenresPostman/GetGenreIdSuccess.png)
+  ![image info](./GenresPostman/getGenreIdSuccess.png)
   * **Error:**
-  ![image_info](./GenresPostman/GetGenreIdFail.png)
+  ![image_info](./GenresPostman/getGenreIdFail.png)
   
 **ADD new genre**
 ----
@@ -259,10 +259,10 @@
     
 * **Sample Call:**
   * **Error:**
-  ![image info](./GenresPostman/AddGenreFail.png)
+  ![image info](./GenresPostman/addGenreFail.png)
   
   * **Success:**
-  ![image info](./GenresPostman/AddGenreSuccess.png)
+  ![image info](./GenresPostman/addGenreSuccess.png)
   
   **EDIT existing genre**
 ----
@@ -298,10 +298,10 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./GenresPostman/PutGenreSuccess.png)
+  ![image info](./GenresPostman/putGenreSuccess.png)
   
   * **Error:**
-  ![image info](./GenresPostman/PutGenreFail.png)
+  ![image info](./GenresPostman/putGenreFail.png)
   
  **DELETE genre by ID**
 ----
@@ -332,7 +332,7 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./GenresPostman/DeleteGenreSuccess.png)
+  ![image info](./GenresPostman/deleteGenreSuccess.png)
   * **Error:**
-  ![image info](./GenresPostman/DeleteGenreFail.png)
+  ![image info](./GenresPostman/deleteGenreFail.png)
   
