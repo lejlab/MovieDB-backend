@@ -39,4 +39,17 @@ public class MoviesController {
 
     @DeleteMapping("/movies/{id}")
     public void deleteMovie(@PathVariable Integer id){ moviesRepository.deleteById(id); }
+
+    @PutMapping("/movies/{id}")
+    public Movie editMovie(@RequestBody Movie newData, @PathVariable("id") Integer id) {
+        return moviesRepository.findById(id)
+                .map(movie -> {
+                    movie.setTitle(newData.getTitle());
+                    movie.setReleaseDate(newData.getReleaseDate());
+                    movie.setBoxOffice(newData.getBoxOffice());
+                    movie.setGenres(newData.getGenres());
+                    System.out.println(movie.toString());
+                    return moviesRepository.save(movie);
+                }).orElseGet(() -> moviesRepository.save(newData));
+    }
 }

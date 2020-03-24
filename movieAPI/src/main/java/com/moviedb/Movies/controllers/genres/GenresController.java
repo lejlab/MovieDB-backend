@@ -5,6 +5,7 @@ import com.moviedb.Movies.controllers.movies.exceptions.MovieNotFoundException;
 import com.moviedb.Movies.models.Genre;
 import com.moviedb.Movies.repositories.GenresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +33,18 @@ public class GenresController {
     }
 
     @DeleteMapping("/genres/{id}")
-    public void deleteGenre(@PathVariable Integer id){ genresRepository.deleteById(id); }
+    public void deleteGenre(@PathVariable Integer id){ genresRepository.deleteById(id);
+    }
+
+    @PutMapping("/genres/{id}")
+    public Genre editGenre(@RequestBody Genre newData, @PathVariable("id") Integer id) {
+        return genresRepository.findById(id)
+                .map(genre -> {
+                    genre.setName(newData.getName());
+                    genre.setMovies(newData.getMovies());
+                    System.out.println(genre.toString());
+                    return genresRepository.save(genre);
+                }).orElseGet(() -> genresRepository.save(newData));
+    }
 
 }
