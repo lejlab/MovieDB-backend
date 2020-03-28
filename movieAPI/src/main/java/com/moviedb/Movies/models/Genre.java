@@ -32,14 +32,6 @@ public class Genre {
     @Size(min = 2, message = "Genre name must have at least 2 characters ")
     @Column(name = "name")
     private String name;
-/*
-    @ManyToMany
-    @JoinTable(
-            name = "genre_movie",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "genre_id"))
-    private Set<Movie> movies;*/
-
 
     @OneToMany(targetEntity = GenreMovie.class, mappedBy = "genre", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = "ownerUser", allowSetters = true)
