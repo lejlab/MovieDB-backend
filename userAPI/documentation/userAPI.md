@@ -326,7 +326,6 @@
    `type=[string]`
 
   * **Optional: **
-    `type=[string]`
     `users=[User[]]`
 
     
@@ -479,7 +478,7 @@
   
  **GET notifications by owner user ID**
 ----
-  Returns json data about a single role found by type.
+  Returns json data about notification(s) found by owner user ID.
 
 * **URL**
 
@@ -513,5 +512,74 @@
   ![image info](./NotificationsPostman/GetNotificationByOwnerIdSuccess.png)
   * **Error:**
   ![image_info](./NotificationsPostman/GetNotificationByOwnerIdFail.png)
+  
+**ADD new notification**
+----
+  Returns json data about a single notification added by API call.
+
+* **URL**
+
+  /notifications
+* **Method:**
+
+  `POST`
+  
+* **Data params: **
+   * **Required: ** 
+ 
+   `message=[string]`
+   `ownerUser=[User]
+    
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : 1, message : "message", ownerUser : User}`
+ 
+* **Error Response:**
+  * **Code:** 500 Internal Server Error<br />
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./NotificationsPostman/AddNewNotificationPart1Success.png)
+  ![image info](./NotificationsPostman/AddNewNotificationPart2Success.png)
+  * **Error:**
+  ![image info](./NotificationsPostman/AddNewNotificationFail.png)
+   
+ **DELETE notification by ID**
+----
+  Deletes notification found by ID.
+
+* **URL**
+
+  /roles/:id
+
+* **Method:**
+
+  `DELETE`
+  
+*  **Path variables**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+ 
+* **Error Response:**
+
+  * **Code:** 404 Error Not Found <br />
+    **Content:** `{ message : "Could not find notification with ID = :id." }`
+    
+   * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./NotificationsPostman/DeleteNotificationSuccess.png)
+  * **Error:**
+  ![image info](./NotificationsPostman/DeleteNotificationFail.png)
+
 
 
