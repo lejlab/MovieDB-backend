@@ -105,13 +105,13 @@
   `POST`
   
 * **Data params: **
-   * **Required: ** 
+   **Required: ** 
  
    `username=[string]`
    `password=[string]`
    `avatarUrl=[string]`
 
-  * **Optional: **
+  **Optional: **
     `role=[Role]`
     `owners=[User[]]`
     `subscribers=[User[]]`
@@ -525,7 +525,7 @@
   `POST`
   
 * **Data params: **
-   * **Required: ** 
+   **Required: ** 
  
    `message=[string]`
    `ownerUser=[User]
