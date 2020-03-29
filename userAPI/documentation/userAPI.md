@@ -578,6 +578,179 @@
   ![image info](./NotificationsPostman/DeleteNotificationSuccess.png)
   * **Error:**
   ![image info](./NotificationsPostman/DeleteNotificationFail.png)
+  
+**GET all subscriptions**
+----
+  Returns json array data about all subscribe records in database.
 
+* **URL**
 
+  /subscriptions
 
+* **Method:**
+
+  `GET`
+  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `[{ id : 1, ownerUser : User, subscribedUser : User, ...]`
+ 
+* **Error Response:**
+  
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "...", details : "..." }`
+
+* **Sample Call:**
+![image info](./SubscriptionsPostman/GetSubscriptions.png)
+  
+ **GET subscription by owner user ID**
+----
+  Returns json data about subscription(s) found by owner user ID.
+
+* **URL**
+
+  /subscriptions/identification/:id
+
+* **Method:**
+
+  `GET`
+  
+*  **Path variables**
+
+   * **Required:**
+ 
+   `id=[integer]`
+
+*  **Query params**
+   * **Required:**
+ 
+   `type=owner`  
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `[{ id : 1, ownerUser : User, subscribedUser : User}, ...]`
+ 
+* **Error Response:**
+
+  * **Code:** 404 Error Not Found <br />
+    **Content:** `{ message : "Could not find subscription with owner user ID = :id." }`
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./SubscriptionsPostman/GetSubscriptionByOwnerIdSuccess.png)
+  * **Error:**
+  ![image_info](./SubscriptionsPostman/GetSubscriptionByOwnerIdFail.png)
+  
+ **GET subscription by subscribed user ID**
+----
+  Returns json data about subscription(s) found by subscribed user ID.
+
+* **URL**
+
+  /subscriptions/identification/:id
+
+* **Method:**
+
+  `GET`
+  
+*  **Path variables**
+
+   * **Required:**
+ 
+   `id=[integer]`
+
+*  **Query params**
+   * **Required:**
+ 
+   `type=subscribed`  
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `[{ id : 1, ownerUser : User, subscribedUser : User}, ...]`
+ 
+* **Error Response:**
+
+  * **Code:** 404 Error Not Found <br />
+    **Content:** `{ message : "Could not find subscription with owner user ID = :id." }`
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./SubscriptionsPostman/GetSubscriptionBySubscribedIdSuccess.png)
+  * **Error:**
+  ![image_info](./SubscriptionsPostman/GetSubscriptionBySubscribedIdFail.png)
+  
+**ADD new subscription**
+----
+  Returns json data about a single subscription added by API call.
+
+* **URL**
+
+  /subscriptions
+* **Method:**
+
+  `POST`
+  
+* **Data params:**
+  * **Required:**
+ 
+   `subscribedUser=[User]`
+   `ownerUser=[User]
+    
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : 1, subscribedUser : User, ownerUser : User}`
+ 
+* **Error Response:**
+  * **Code:** 500 Internal Server Error<br />
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./SubscriptionsPostman/AddNewSubscribeSuccess.png)
+  * **Error:**
+  ![image info](./NotificationsPostman/AddNewSubscribeEmptyFail.png)
+   
+ **DELETE subscription by ID**
+----
+  Deletes subscription found by ID.
+
+* **URL**
+
+  /subscriptions/:id
+
+* **Method:**
+
+  `DELETE`
+  
+*  **Path variables**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+ 
+* **Error Response:**
+
+  * **Code:** 404 Error Not Found <br />
+    **Content:** `{ message : "Could not find subscription with ID = :id." }`
+    
+   * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./NotificationsPostman/DeleteSubscriptionSuccess.png)
+  * **Error:**
+  ![image info](./NotificationsPostman/DeleteSubscriptionFail.png)
