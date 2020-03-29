@@ -104,7 +104,7 @@
 
   `POST`
   
-* **Data params: **
+* **Method:**
   * **Required: ** 
    `username=[string]`
    `password=[string]`
