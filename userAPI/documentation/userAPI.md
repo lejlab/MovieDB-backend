@@ -476,5 +476,42 @@
   ![image info](./NotificationsPostman/GetNotificationByIdSuccess.png)
   * **Error:**
   ![image info](./NotificationsPostman/GetNotificationByIdFail.png)
+  
+ **GET notifications by owner user ID**
+----
+  Returns json data about a single role found by type.
+
+* **URL**
+
+  /notifications/identification/:id
+
+* **Method:**
+
+  `GET`
+  
+*  **Path variables**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `[{ id : 1, ownerUser : User, message : "message"}, ...]`
+ 
+* **Error Response:**
+
+  * **Code:** 404 Error Not Found <br />
+    **Content:** `{ message : "Could not find notification with owner user ID = :id." }`
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./NotificationsPostman/GetNotificationByOwnerIdSuccess.png)
+  * **Error:**
+  ![image_info](./NotificationsPostman/GetNotificationByOwnerIdFail.png)
 
 
