@@ -551,7 +551,7 @@
 
 * **URL**
 
-  /roles/:id
+  /notifications/:id
 
 * **Method:**
 
