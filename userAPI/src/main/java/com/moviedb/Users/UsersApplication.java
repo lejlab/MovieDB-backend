@@ -14,10 +14,6 @@ import com.moviedb.Users.models.Role;
 import com.moviedb.Users.repositories.UsersRepository;
 import com.moviedb.Users.repositories.RolesRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 @SpringBootApplication
 public class UsersApplication {
 	private static final Logger log = LoggerFactory.getLogger(UsersApplication.class);

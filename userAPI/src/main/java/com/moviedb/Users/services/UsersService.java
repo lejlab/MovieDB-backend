@@ -45,4 +45,18 @@ public class UsersService {
                     return usersRepository.save(user);
                 }).orElseGet(() -> usersRepository.save(newData));
     }
+
+    public Optional<User> changePassword(Integer id, String password) {
+        return usersRepository.findById(id).map(user -> {
+            user.setPassword(password);
+            return usersRepository.save(user);
+        });
+    }
+
+    public Optional<User> changeAvatar(Integer id, String avatarUrl) {
+        return usersRepository.findById(id).map(user -> {
+            user.setAvatarUrl(avatarUrl);
+            return usersRepository.save(user);
+        });
+    }
 }

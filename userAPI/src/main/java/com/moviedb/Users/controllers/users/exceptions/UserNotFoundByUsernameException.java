@@ -1,7 +1,10 @@
 package com.moviedb.Users.controllers.users.exceptions;
 
-public class UserNotFoundByUsernameException extends RuntimeException {
+import com.moviedb.Users.models.errors.ApiException;
+import org.springframework.http.HttpStatus;
+
+public class UserNotFoundByUsernameException extends ApiException {
     public UserNotFoundByUsernameException(String username) {
-        super("Could not find user with username = " + username + ".");
+        super(HttpStatus.NOT_FOUND, "Could not find user with username = " + username + ".", "");
     }
 }
