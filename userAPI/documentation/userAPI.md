@@ -376,7 +376,7 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./UsersPostman/UpdateRoleSuccess.png)
+  ![image info](./RolesPostman/UpdateRoleSuccess.png)
  
  
  **DELETE role by ID**
