@@ -1,7 +1,10 @@
 package com.moviedb.Users.controllers.notifications.exceptions;
 
-public class NotificationNotFoundByOwnerIdException extends RuntimeException {
+import com.moviedb.Users.models.errors.ApiException;
+import org.springframework.http.HttpStatus;
+
+public class NotificationNotFoundByOwnerIdException extends ApiException {
     public NotificationNotFoundByOwnerIdException(Integer ownerId){
-        super("Could not find notification with owner ID = " + ownerId + ".");
+        super(HttpStatus.NOT_FOUND, "Could not find notification with owner ID = " + ownerId + ".", "");
     }
 }
