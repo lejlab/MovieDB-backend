@@ -129,7 +129,7 @@
   * **Success:**
   ![image info](./UsersPostman/PostUsersSuccess.png)
   
-  **EDIT existing user**
+**EDIT existing user**
 ----
   Returns json data about a single user edited by API call.
 
