@@ -603,7 +603,44 @@
 
 * **Sample Call:**
 ![image info](./SubscriptionsPostman/GetSubscriptions.png)
+
+ **GET subscription by ID**
+----
+  Returns json data about subscription(s) found by ID.
+
+* **URL**
+
+  /subscriptions/:id
+
+* **Method:**
+
+  `GET`
   
+*  **Path variables**
+
+   * **Required:**
+ 
+   `id=[integer]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `[{ id : id, ownerUser : User, subscribedUser : User}, ...]`
+ 
+* **Error Response:**
+
+  * **Code:** 404 Error Not Found <br />
+    **Content:** `{ message : "Could not find subscription with ID = :id." }`
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./SubscriptionsPostman/GetSubscriptionByIdSuccess.png)
+  * **Error:**
+  ![image_info](./SubscriptionsPostman/GetSubscriptionByIdFail.png)
+
  **GET subscription by owner user ID**
 ----
   Returns json data about subscription(s) found by owner user ID.
