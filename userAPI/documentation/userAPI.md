@@ -353,16 +353,16 @@
   
 *  **Path variables**
 
-   **Required:**
+   * **Required:**
  
    `id=[integer]`
   
 *  **Data params:**
-   **Required:** 
+   * **Required:** 
  
    `type=[string]`
 
-   **Optional:**
+   * **Optional:**
     `users=[User[]]`
 
 * **Success Response:**
@@ -451,7 +451,7 @@
   
 *  **Path variables**
 
-   **Required:**
+   * **Required:**
  
    `id=[integer]`
 
@@ -488,7 +488,7 @@
   
 *  **Path variables**
 
-   **Required:**
+   * **Required:**
  
    `id=[integer]`
 
@@ -523,7 +523,7 @@
   `POST`
   
 * **Data params:**
-   **Required:** 
+  * **Required:**
  
    `message=[string]`
    `ownerUser=[User]
