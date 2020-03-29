@@ -309,6 +309,13 @@
   * **Error:**
   ![image_info](./RolesPostman/GetRoleByTypeFail.png)
   
+**ADD new role**
+----
+  Returns json data about a single role added by API call.
+
+* **URL**
+
+  /roles
 * **Method:**
 
   `POST`
@@ -334,3 +341,39 @@
 * **Sample Call:**
   * **Success:**
   ![image info](./RolesPostman/AddRole.png)
+  
+ **DELETE role by ID**
+----
+  Deletes role found by ID.
+
+* **URL**
+
+  /roles/:id
+
+* **Method:**
+
+  `DELETE`
+  
+*  **Path variables**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+ 
+* **Error Response:**
+
+  * **Code:** 404 Error Not Found <br />
+    **Content:** `{ message : "Could not find role with ID = :id." }`
+    
+   * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./RolesPostman/DeleteRoleSuccess.png)
+  * **Error:**
+  ![image info](./RolesPostman/DeleteRoleFail.png)
