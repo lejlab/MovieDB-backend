@@ -48,8 +48,11 @@
  
 * **Error Response:**
 
-  * **Code:** 500 Internal Server Error <br />
+  * **Code:** 404 Error Not Found <br />
     **Content:** `{ message : "Could not find user with ID = :id." }`
+    
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
     
 * **Sample Call:**
 ![image info](./UsersPostman/GetUserByUserIdObjectJson.png)
@@ -79,8 +82,11 @@
  
 * **Error Response:**
 
-  * **Code:** 500 Internal Server Error <br />
+  * **Code:** 404 Error Not Found <br />
     **Content:** `{ message : "Could not find user with username = :username." }`
+    
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
     
 * **Sample Call:**
   * **Success:**
@@ -191,8 +197,11 @@
  
 * **Error Response:**
 
-  * **Code:** 500 Internal Server Error <br />
+  * **Code:** 404 Error Not Found <br />
     **Content:** `{ message : "Could not find user with ID = :id." }`
+    
+   * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
     
 * **Sample Call:**
   * **Success:**
@@ -251,8 +260,11 @@
  
 * **Error Response:**
 
-  * **Code:** 500 Internal Server Error <br />
+  * **Code:** 404 Error Not Found <br />
     **Content:** `{ message : "Could not find user with ID = :id." }`
+    
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
     
 * **Sample Call:**
   * **Success:**
@@ -285,8 +297,11 @@
  
 * **Error Response:**
 
-  * **Code:** 500 Internal Server Error <br />
+  * **Code:** 404 Error Not Found <br />
     **Content:** `{ message : "Could not find user with type = :type." }`
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
     
 * **Sample Call:**
   * **Success:**
