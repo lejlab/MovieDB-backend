@@ -333,7 +333,7 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ id : 1, type : type, users : User[]}`
+    **Content:** `{ id : 1, type : "type", users : User[]}`
  
 * **Error Response:**
   * **Code:** 500 Internal Server Error<br />
@@ -371,7 +371,7 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ id : 1, type : type, users : User[]}`
+    **Content:** `{ id : 1, type : "type", users : User[]}`
  
     
 * **Sample Call:**
@@ -414,3 +414,67 @@
   ![image info](./RolesPostman/DeleteRoleSuccess.png)
   * **Error:**
   ![image info](./RolesPostman/DeleteRoleFail.png)
+  
+**GET all notifications**
+----
+  Returns json array data about all notification records in database.
+
+* **URL**
+
+  /notifications
+
+* **Method:**
+
+  `GET`
+  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `[{ id : 1, ownerUser : User, message : "message"}, ...]`
+ 
+* **Error Response:**
+  
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "...", details : "..." }`
+
+* **Sample Call:**
+![image info](./NotificationsPostman/GetNotifications.png)
+
+**GET notification by ID**
+----
+  Returns json data about a single notification found by ID.
+
+* **URL**
+
+  /notifications/:id
+
+* **Method:**
+
+  `GET`
+  
+*  **Path variables**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : id, ownerUser : User, message : "message"}`
+ 
+* **Error Response:**
+
+  * **Code:** 404 Error Not Found <br />
+    **Content:** `{ message : "Could not find nofitication with ID = :id." }`
+    
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "..." }`
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./NotificationsPostman/GetNotificationByIdSuccess.png)
+  * **Error:**
+  ![image info](./NotificationsPostman/GetNotificationByIdFail.png)
+
+
