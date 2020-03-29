@@ -717,7 +717,7 @@
   * **Success:**
   ![image info](./SubscriptionsPostman/AddNewSubscribeSuccess.png)
   * **Error:**
-  ![image info](./NotificationsPostman/AddNewSubscribeEmptyFail.png)
+  ![image info](./SubscriptionsPostman/AddNewSubscribeEmptyFail.png)
    
  **DELETE subscription by ID**
 ----
@@ -751,6 +751,6 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./NotificationsPostman/DeleteSubscriptionSuccess.png)
+  ![image info](./SubscriptionsPostman/DeleteSubscriptionSuccess.png)
   * **Error:**
-  ![image info](./NotificationsPostman/DeleteSubscriptionFail.png)
+  ![image info](./SubscriptionsPostman/DeleteSubscriptionFail.png)
