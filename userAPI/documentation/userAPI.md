@@ -360,12 +360,12 @@
  
    `id=[integer]`
   
-* **Data params: **
-   * **Required: ** 
+*  **Data params: **
+   **Required: ** 
  
    `type=[string]`
 
-  * **Optional: **
+   **Optional: **
     `users=[User[]]`
 
 * **Success Response:**
