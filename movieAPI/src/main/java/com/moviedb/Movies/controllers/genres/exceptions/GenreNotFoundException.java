@@ -1,7 +1,10 @@
 package com.moviedb.Movies.controllers.genres.exceptions;
 
-public class GenreNotFoundException extends RuntimeException {
+import com.moviedb.Movies.models.errors.ApiException;
+import org.springframework.http.HttpStatus;
+
+public class GenreNotFoundException extends ApiException {
     public GenreNotFoundException(Integer id) {
-        super("Could not find genre with ID = " + id + ".");
+        super(HttpStatus.NOT_FOUND,"Could not find genre with ID = " + id + ".", "");
     }
 }

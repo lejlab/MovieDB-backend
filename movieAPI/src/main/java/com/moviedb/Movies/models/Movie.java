@@ -39,11 +39,6 @@ public class Movie {
     @Column(name = "box_office")
     @PositiveOrZero(message="Box office must be nonnegative")
     private double boxOffice;
-/*
-    @ManyToMany(mappedBy = "movies")
-    private Set<Genre> genres;
-
-*/
 
     @OneToMany(targetEntity = GenreMovie.class, mappedBy = "movie", fetch = FetchType.LAZY)
     @Fetch(value = FetchMode.SUBSELECT)
