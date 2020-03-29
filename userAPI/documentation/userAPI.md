@@ -342,7 +342,7 @@
   * **Success:**
   ![image info](./RolesPostman/AddRole.png)
   
-   **EDIT existing role**
+**EDIT existing role**
 ----
   Returns json data about a single role edited by API call.
 
