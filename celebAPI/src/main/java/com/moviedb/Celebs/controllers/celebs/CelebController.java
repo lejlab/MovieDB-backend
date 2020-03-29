@@ -1,12 +1,16 @@
 package com.moviedb.Celebs.controllers.celebs;
 
+import com.moviedb.Celebs.controllers.celebs.exceptions.CelebNotFoundException;
 import com.moviedb.Celebs.models.Celeb;
+import com.moviedb.Celebs.models.CelebJobs;
+import com.moviedb.Celebs.services.CelebsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.moviedb.Celebs.repositories.CelebsRepository;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,26 +19,51 @@ import static java.lang.Integer.parseInt;
 @RestController
 public class CelebController {
     @Autowired
+    private CelebsService celebsService;
+    @Autowired
     CelebsRepository celebsRepository;
 
     @GetMapping("/")
     public String index(){
-        return ("celebs, celebs/{name}, celebs/{date}, jobs, celebjobs, ceclebjobs/{id}, moviecelebs, moviecelebs{id}");
+        return ("celebs, celebs/{name}, celebs/{date}, jobs, celebjobs, celebjobs/{id}, moviecelebs, moviecelebs{id}");
     }
 
     @GetMapping("/celebs")
-    public List<Celeb> find() {
-        return celebsRepository.findAll();
+    public List<Celeb> getAll(){
+        return celebsService.getAll();
     }
 
-    @GetMapping("/celebs/{name}")
-    public List<Celeb> find(@PathVariable("name") String name) {
-        return celebsRepository.findByName(name);
+    @GetMapping("/celebs/{id}")
+    public Celeb getOneById(@PathVariable(value = "id") Integer id) {
+        return celebsService.getOneById(id).orElseThrow(() -> new CelebNotFoundException(id));
     }
 
-    @GetMapping("/celebs/{date}")
-    public List<Celeb> find(@PathVariable("name") Date date) {
-        return celebsRepository.findByDateOfBirth(date);
+    @GetMapping("/celebs/identification/{something}")
+    public List<Celeb> findAllBySomething(@PathVariable(value = "something") String something, @RequestParam String type) throws ParseException {
+
+        if (type.equals("name")) {
+            return celebsService.getAllByName(something);
+        }
+        else if (type.equals("date")) {
+            return celebsService.getAllByDateOfBirth(something);
+        }
+        else {
+            return new ArrayList<Celeb>();
+        }
     }
 
+    @PostMapping("/celebs")
+    public Celeb addNewOne(@RequestBody Celeb newCeleb) {
+        return celebsService.addOne(newCeleb);
+    }
+
+    @PutMapping("/celebs/{id}")
+    public Celeb editOne(@RequestBody Celeb newData, @PathVariable("id") Integer id) {
+        return celebsService.editOne(newData, id);
+    }
+
+    @DeleteMapping("/celebs/{id}")
+    public void deleteOne(@PathVariable Integer id) {
+        celebsService.removeOne(id);
+    }
 }

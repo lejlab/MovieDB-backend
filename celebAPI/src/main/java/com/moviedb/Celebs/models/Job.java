@@ -13,9 +13,8 @@ import java.util.List;
 public class Job {
     public Job() {}
 
-    public Job(@NotNull(message = "Title must not be empty.") @Size(max = 2, message = "Title must not be longer than 2 characters.") String title) {
+    public Job(@NotNull(message = "Title must not be empty.") @Size(min = 2, message = "Title must not be longer than 2 characters.") String title) {
         this.title = title;
-        celebJobs = new ArrayList<CelebJobs>();
     }
 
     @Id
@@ -24,32 +23,32 @@ public class Job {
     private Integer id;
 
     @NotNull(message = "Title must not be empty.")
-    @Size(max = 2, message = "Title must not be longer than 2 characters.")
+    @Size(min = 2, message = "Title must be longer than 2 characters.")
     @Column(name = "title")
     private String title;
 
-    @OneToMany(targetEntity = CelebJobs.class, mappedBy = "job", fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = CelebJobs.class, mappedBy = "job", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = "job", allowSetters = true)
-    private List<CelebJobs> celebJobs;
+    private List<CelebJobs> celebs;
 
     public Integer getId() {
         return id;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public List<CelebJobs> getCeleb_jobs() {
-        return celebJobs;
+    public List<CelebJobs> getCelebs() {
+        return celebs;
     }
 
-    public void setCeleb_jobs(List<CelebJobs> celeb_jobs) {
-        this.celebJobs = celeb_jobs;
+    public void setCelebs(List<CelebJobs> celebs) {
+        this.celebs = celebs;
     }
 
     @Override

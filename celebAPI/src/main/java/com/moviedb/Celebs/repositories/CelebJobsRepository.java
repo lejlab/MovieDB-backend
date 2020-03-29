@@ -13,3 +13,5 @@ public interface CelebJobsRepository extends JpaRepository<CelebJobs, Integer> {
     @Query(value = "SELECT cj from CelebJobs cj WHERE job_id = :id")
     List<CelebJobs> findByJobId(@Param("id") Integer id);
 }
+
+

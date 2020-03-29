@@ -13,6 +13,6 @@ import java.util.List;
 public interface CelebsRepository extends JpaRepository<Celeb, Integer> {
     @Query(value = "SELECT c from Celeb c WHERE first_name = :name OR last_name = :name")
     List<Celeb> findByName(@Param("name") String name);
-    @Query(value = "SELECT c from Celeb c WHERE dateOfBirth = :dateOfBirth")
-    List<Celeb> findByDateOfBirth(@Param("dateOfBirth") Date dateOfBirth);
+    @Query(value = "SELECT c from Celeb c WHERE date_of_birth = :dateOfBirth")
+    List<Celeb> findByDateOfBirth(@Param("dateOfBirth") String dateOfBirth);
 }

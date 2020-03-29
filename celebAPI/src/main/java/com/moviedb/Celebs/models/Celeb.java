@@ -18,8 +18,6 @@ public class Celeb {
         this.firstName = first_name;
         this.lastName = last_name;
         this.dateOfBirth = date_of_birth;
-        celebJobs = new ArrayList<CelebJobs>();
-        movieCelebs = new ArrayList<MovieCeleb>();
     }
 
     @Id
@@ -37,66 +35,66 @@ public class Celeb {
     @Column(name = "last_name")
     private String lastName;
 
-    @NotNull(message = "Date of birst must not be empty.")
+    @NotNull(message = "Date of birth must not be empty.")
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
-    @OneToMany(targetEntity = CelebJobs.class, mappedBy = "celeb", fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = CelebJobs.class, mappedBy = "celeb", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = "celeb", allowSetters = true)
-    private List<CelebJobs> celebJobs;
+    private List<CelebJobs> jobs;
 
-    @OneToMany(targetEntity = CelebJobs.class, mappedBy = "celeb", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties(value = "celeb", allowSetters = true)
-    private List<MovieCeleb> movieCelebs;
+    @OneToMany(targetEntity = CelebJobs.class, mappedBy = "celeb", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = { "celeb", "job"}, allowSetters = true)
+    private List<MovieCeleb> movies;
 
     public Integer getId() {
         return id;
     }
 
-    public String getFirst_name() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.firstName = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.lastName = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public Date getDate_of_birth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
-        this.dateOfBirth = date_of_birth;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public List<CelebJobs> getCeleb_jobs() {
-        return celebJobs;
+    public List<CelebJobs> getJobs() {
+        return jobs;
     }
 
-    public void setCeleb_jobs(List<CelebJobs> celeb_jobs) {
-        this.celebJobs = celeb_jobs;
+    public void setJobs(List<CelebJobs> jobs) {
+        this.jobs = jobs;
     }
 
-    public List<MovieCeleb> getMovie_celebs() {
-        return movieCelebs;
+    public List<MovieCeleb> getMovies() {
+        return movies;
     }
 
-    public void setMovie_celebs(List<MovieCeleb> movie_celebs) {
-        this.movieCelebs = movie_celebs;
+    public void setMovies(List<MovieCeleb> movies) {
+        this.movies = movies;
     }
 
     @Override
     public String toString(){
         return String.format(
-                "Celeb[id=%d, first_name=%s, last_name=%s, date_of_birth=%c]",
+                "Celeb[id=%d, first_name=%s, last_name=%s, date_of_birth=%s]",
                 id, firstName, lastName, dateOfBirth);
     }
 

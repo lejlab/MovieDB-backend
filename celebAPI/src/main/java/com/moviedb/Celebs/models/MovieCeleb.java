@@ -23,7 +23,7 @@ public class MovieCeleb {
 
     @NotNull(message = "Celeb must not be empty.")
     @ManyToOne
-    @JsonIgnoreProperties(value = "movie_celebs", allowSetters = true)
+    @JsonIgnoreProperties(value = "movies", allowSetters = true)
     @JoinColumn(name = "celeb_id", nullable = false)
     private Celeb celeb;
 

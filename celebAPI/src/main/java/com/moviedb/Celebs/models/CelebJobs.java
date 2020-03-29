@@ -1,5 +1,6 @@
 package com.moviedb.Celebs.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -10,8 +11,7 @@ import javax.validation.constraints.NotNull;
 public class CelebJobs {
     public CelebJobs() {}
 
-    public CelebJobs(Integer id, @NotNull(message = "Job must not be empty.") Job job, @NotNull(message = "Celeb must not be empty.") Celeb celeb) {
-        this.id = id;
+    public CelebJobs(@NotNull(message = "Job must not be empty.") Job job, @NotNull(message = "Celeb must not be empty.") Celeb celeb) {
         this.job = job;
         this.celeb = celeb;
     }
@@ -23,13 +23,13 @@ public class CelebJobs {
 
     @NotNull(message = "Job must not be empty.")
     @ManyToOne
-    @JsonIgnoreProperties(value = "celeb_jobs", allowSetters = true)
+    @JsonIgnoreProperties(value = "celebs", allowSetters = true)
     @JoinColumn(name = "job_id", nullable = false)
     private Job job;
 
     @NotNull(message = "Celeb must not be empty.")
     @ManyToOne
-    @JsonIgnoreProperties(value = "celeb_jobs", allowSetters = true)
+    @JsonIgnoreProperties(value = "jobs", allowSetters = true)
     @JoinColumn(name = "celeb_id", nullable = false)
     private Celeb celeb;
 
