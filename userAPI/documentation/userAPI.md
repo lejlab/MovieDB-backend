@@ -146,13 +146,13 @@
  
    `id=[integer]`
   
-* **Data params: **
-  * **Required: ** 
+* **Data params:**
+  * **Required:**
     `username=[string]`
     `password=[string]`
     `avatarUrl=[string]`
 
-  * **Optional: **
+  * **Optional:**
     `role=[Role]`
     `owners=[User[]]`
     `subscribers=[User[]]`
@@ -318,12 +318,12 @@
 
   `POST`
   
-* **Data params: **
-   * **Required: ** 
+* **Data params:**
+   * **Required:** 
  
    `type=[string]`
 
-  * **Optional: **
+  * **Optional:**
     `users=[User[]]`
 
     
@@ -357,12 +357,12 @@
  
    `id=[integer]`
   
-*  **Data params: **
-   **Required: ** 
+*  **Data params:**
+   **Required:** 
  
    `type=[string]`
 
-   **Optional: **
+   **Optional:**
     `users=[User[]]`
 
 * **Success Response:**
@@ -522,8 +522,8 @@
 
   `POST`
   
-* **Data params: **
-   **Required: ** 
+* **Data params:**
+   **Required:** 
  
    `message=[string]`
    `ownerUser=[User]
