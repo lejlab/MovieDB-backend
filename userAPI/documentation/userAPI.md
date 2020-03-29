@@ -123,7 +123,7 @@
     **Content:** `{ id : 1, username : username, password : "test_password", avatarUrl : "test_avatarUrl, role : roleObject, owners : User[], subscriber: User[], notifications: Notification[]}`
  
 * **Error Response:**
-  * **Code:** 500 <br />
+  * **Code:** 500 Internal Server Error<br />
     
 * **Sample Call:**
   * **Success:**
@@ -309,3 +309,28 @@
   * **Error:**
   ![image_info](./RolesPostman/GetRoleByTypeFail.png)
   
+* **Method:**
+
+  `POST`
+  
+* **Data params: **
+   * **Required: ** 
+ 
+   `type=[string]`
+
+  * **Optional: **
+    `type=[string]`
+    `users=[User[]]`
+
+    
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : 1, type : type, users : User[]}`
+ 
+* **Error Response:**
+  * **Code:** 500 Internal Server Error<br />
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./RolesPostman/AddRole.png)
