@@ -5,6 +5,7 @@ import com.moviedb.Users.controllers.subscriptions.exceptions.SubscriptionNotFou
 import com.moviedb.Users.controllers.subscriptions.exceptions.SubscriptionNotFoundBySubscribedIdException;
 import com.moviedb.Users.controllers.subscriptions.exceptions.SubscriptionNotFoundException;
 import com.moviedb.Users.models.Subscribe;
+import com.moviedb.Users.services.SubscriptionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.moviedb.Users.repositories.SubscriptionsRepository;
@@ -17,37 +18,38 @@ import static java.lang.Integer.parseInt;
 @RestController
 public class SubscriptionsController {
     @Autowired
+    private SubscriptionsService subscriptionsService;
+
+    @Autowired
     SubscriptionsRepository subscriptionsRepository;
 
     @GetMapping("/subscriptions")
-    public List<Subscribe> find(){
-        return subscriptionsRepository.findAll();
+    public List<Subscribe> getAllSubscriptions(){
+        return subscriptionsService.getAllSubscriptions();
     }
 
     @PostMapping("/subscriptions")
     public Subscribe newSubscription(@RequestBody Subscribe newSubscribe) {
-        return subscriptionsRepository.save(newSubscribe);
+        return subscriptionsService.addNewSubscription(newSubscribe);
     }
 
     @GetMapping("/subscriptions/{id}")
-    public Object findById(@PathVariable(value = "id") Integer id) {
-        return subscriptionsRepository.findById(id).orElseThrow(() -> new SubscriptionNotFoundException(id));
+    public Object getOneById(@PathVariable(value = "id") Integer id) {
+        return subscriptionsService.getOneById(id).orElseThrow(() -> new SubscriptionNotFoundException(id));
     }
 
     @DeleteMapping("/subscriptions/{id}")
-    public void deleteSubscribe(@PathVariable Integer id) {
-        subscriptionsRepository.deleteById(id);
+    public void removeSubscription(@PathVariable Integer id) {
+        subscriptionsService.removeOne(id);
     }
 
     @GetMapping("/subscriptions/identification/{id}")
-    public Object findByUserId(@PathVariable(value = "id") String id, @RequestParam String type){
-        Integer userId = parseInt(id);
-
+    public Object findByUserId(@PathVariable(value = "id") Integer id, @RequestParam String type){
         if (type.equals("subscribed")){
-            return subscriptionsRepository.findBySubscribedUserId(userId).orElseThrow(() -> new SubscriptionNotFoundBySubscribedIdException(userId));
+            return subscriptionsService.getOneBySubscribedUserId(id).orElseThrow(() -> new SubscriptionNotFoundBySubscribedIdException(id));
         }
         else if (type.equals("owner")) {
-            return subscriptionsRepository.findByOwnerUserId(userId).orElseThrow(() -> new SubscriptionNotFoundByOwnerIdException(userId));
+            return subscriptionsService.getOneByOwnerUserId(id).orElseThrow(() -> new SubscriptionNotFoundByOwnerIdException(id));
         }
         return new ArrayList<Subscribe>();
     }

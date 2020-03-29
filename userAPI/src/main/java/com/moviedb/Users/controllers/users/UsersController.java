@@ -2,6 +2,7 @@ package com.moviedb.Users.controllers.users;
 
 import com.moviedb.Users.controllers.users.exceptions.UserNotFoundByUsernameException;
 import com.moviedb.Users.controllers.users.exceptions.UserNotFoundException;
+import com.moviedb.Users.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,46 +14,35 @@ import com.moviedb.Users.repositories.UsersRepository;
 @RestController
 public class UsersController {
     @Autowired
-    UsersRepository usersRepository;
+    private UsersService usersService;
 
     @GetMapping("/users")
-    public List<User> find(){
-        return usersRepository.findAll();
+    public List<User> getAll(){
+        return usersService.getAllUsers();
     }
 
     @PostMapping("/users")
-    public User newUser(@RequestBody User newUser) {
-        return usersRepository.save(newUser);
+    public User addNewUser(@RequestBody User newUser) {
+        return usersService.addNewUser(newUser);
     }
 
     @PutMapping("/users/{id}")
-    public User editUser(@RequestBody User newData, @PathVariable("id") Integer id) {
-        return usersRepository.findById(id)
-                .map(user -> {
-                    user.setUsername(newData.getUsername());
-                    user.setPassword(newData.getPassword());
-                    user.setAvatarUrl(newData.getAvatarUrl());
-                    user.setRole(newData.getRole());
-                    user.setSubscribers(newData.getSubscribers());
-                    user.setOwners(newData.getOwners());
-                    user.setNotifications(newData.getNotifications());
-                    System.out.println(user.toString());
-                    return usersRepository.save(user);
-                }).orElseGet(() -> usersRepository.save(newData));
+    public User editOne(@RequestBody User user, @PathVariable("id") Integer id) {
+        return usersService.editOne(user, id);
     }
 
     @DeleteMapping("/users/{id}")
-    public void deleteUser(@PathVariable Integer id) {
-        usersRepository.deleteById(id);
+    public void removeUser(@PathVariable Integer id) {
+        usersService.removeOne(id);
     }
 
     @GetMapping("/users/{id}")
-    public Object findOneById(@PathVariable("id") Integer id) {
-        return usersRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+    public Object getOneById(@PathVariable("id") Integer id) {
+        return usersService.getOneById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 
     @GetMapping("/users/identification/{username}")
-    public Object findOneByUsername(@PathVariable("username") String username){
-        return usersRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundByUsernameException(username));
+    public Object getOneByUsername(@PathVariable("username") String username){
+        return usersService.getOneByUsername(username).orElseThrow(() -> new UserNotFoundByUsernameException(username));
     }
 }

@@ -4,6 +4,7 @@ import com.moviedb.Users.controllers.notifications.exceptions.NotificationNotFou
 import com.moviedb.Users.controllers.notifications.exceptions.NotificationNotFoundException;
 import com.moviedb.Users.models.Notification;
 import com.moviedb.Users.repositories.NotificationsRepository;
+import com.moviedb.Users.services.NotificationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,28 +13,28 @@ import java.util.List;
 @RestController
 public class NotificationsController {
     @Autowired
-    NotificationsRepository notificationsRepository;
+    NotificationsService notificationsService;
 
     @GetMapping("/notifications")
-    public List<Notification> find(){
-        return notificationsRepository.findAll();
+    public List<Notification> getAllNotifications(){
+        return notificationsService.getAllNotifications();
     }
 
     @PostMapping("/notifications")
-    public Notification newNotification(@RequestBody Notification newNotification) {
-        return notificationsRepository.save(newNotification);
+    public Notification addNewNotification(@RequestBody Notification newNotification) {
+        return notificationsService.addNewNotification(newNotification);
     }
 
     @DeleteMapping("/notifications/{id}")
-    public void deleteNotification(@PathVariable Integer id){ notificationsRepository.deleteById(id); }
+    public void removeOne(@PathVariable Integer id){ notificationsService.removeOne(id); }
 
     @GetMapping("/notifications/{id}")
     public Object findById(@PathVariable("id") Integer id){
-        return notificationsRepository.findById(id).orElseThrow(() -> new NotificationNotFoundException(id));
+        return notificationsService.getOneById(id).orElseThrow(() -> new NotificationNotFoundException(id));
     }
 
     @GetMapping("/notifications/identification/{id}")
     public Object findByOwnerUserId(@PathVariable("id") Integer id){
-        return notificationsRepository.findByOwnerUserId(id).orElseThrow(() -> new NotificationNotFoundByOwnerIdException(id));
+        return notificationsService.getOneByOwnerUserId(id).orElseThrow(() -> new NotificationNotFoundByOwnerIdException(id));
     }
 }

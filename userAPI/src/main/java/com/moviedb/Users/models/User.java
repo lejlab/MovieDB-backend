@@ -1,13 +1,10 @@
 package com.moviedb.Users.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.aspectj.weaver.ast.Not;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;

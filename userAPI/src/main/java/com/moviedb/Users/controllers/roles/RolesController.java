@@ -3,6 +3,7 @@ package com.moviedb.Users.controllers.roles;
 
 import com.moviedb.Users.controllers.roles.exceptions.RoleNotFoundByTypeException;
 import com.moviedb.Users.controllers.roles.exceptions.RoleNotFoundException;
+import com.moviedb.Users.services.RolesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.moviedb.Users.models.Role;
@@ -13,41 +14,36 @@ import java.util.List;
 @RestController
 public class RolesController {
     @Autowired
-    RolesRepository rolesRepository;
+    private RolesService rolesService;
 
     @GetMapping("/roles")
-    public List<Role> find(){
-        return rolesRepository.findAll();
+    public List<Role> getAll(){
+        return rolesService.getAllRoles();
     }
 
     @PostMapping("/roles")
-    public Role newRole(@RequestBody Role newRole) {
-        return rolesRepository.save(newRole);
+    public Role addNewRole(@RequestBody Role newRole) {
+        return rolesService.addNewRole(newRole);
     }
 
     @PutMapping("/roles/{id}")
     public Role editUser(@RequestBody Role newData, @PathVariable("id") Integer id) {
-        return rolesRepository.findById(id)
-                .map(role -> {
-                    role.setType(newData.getType());
-                    role.setUsers(newData.getUsers());
-                    return rolesRepository.save(role);
-                }).orElseGet(() -> rolesRepository.save(newData));
+        return rolesService.editOne(newData, id);
     }
 
     @DeleteMapping("/roles/{id}")
     public void deleteRole(@PathVariable Integer id) {
-        rolesRepository.deleteById(id);
+        rolesService.removeOne(id);
     }
 
     @GetMapping("/roles/{id}")
-    public Object findById(@PathVariable Integer id){
-        return rolesRepository.findById(id).orElseThrow(() -> new RoleNotFoundException(id));
+    public Object getOneById(@PathVariable Integer id){
+        return rolesService.getOneById(id).orElseThrow(() -> new RoleNotFoundException(id));
     }
 
 
     @GetMapping("/roles/identification/{type}")
-    public Object findByUsername(@PathVariable("type") String type){
-        return rolesRepository.findByType(type).orElseThrow(() -> new RoleNotFoundByTypeException(type));
+    public Object getOneByType(@PathVariable("type") String type){
+        return rolesService.getOneByType(type).orElseThrow(() -> new RoleNotFoundByTypeException(type));
     }
 }
