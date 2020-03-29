@@ -684,9 +684,9 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./SubscriptionsPostman/GetSubscriptionBySubscribedIdSuccess.png)
+  ![image info](./SubscriptionsPostman/GetSubscriptionsBySubscribedIdSuccess.png)
   * **Error:**
-  ![image_info](./SubscriptionsPostman/GetSubscriptionBySubscribedIdFail.png)
+  ![image_info](./SubscriptionsPostman/GetSubscriptionsBySubscribedIdFalse.png)
   
 **ADD new subscription**
 ----
