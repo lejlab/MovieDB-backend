@@ -104,13 +104,13 @@
 
   `POST`
   
-* **Method:**
-  * **Required: ** 
+* **Data params:**
+  * **Required:** 
    `username=[string]`
    `password=[string]`
    `avatarUrl=[string]`
 
-  * **Optional: **
+  * **Optional:**
     `role=[Role]`
     `owners=[User[]]`
     `subscribers=[User[]]`
