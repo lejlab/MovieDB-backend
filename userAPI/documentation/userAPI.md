@@ -342,6 +342,43 @@
   * **Success:**
   ![image info](./RolesPostman/AddRole.png)
   
+   **EDIT existing role**
+----
+  Returns json data about a single role edited by API call.
+
+* **URL**
+
+  /roles
+
+* **Method:**
+
+  `PUT`
+  
+*  **Path variables**
+
+   **Required:**
+ 
+   `id=[integer]`
+  
+* **Data params: **
+   * **Required: ** 
+ 
+   `type=[string]`
+
+  * **Optional: **
+    `users=[User[]]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : 1, type : type, users : User[]}`
+ 
+    
+* **Sample Call:**
+  * **Success:**
+  ![image info](./UsersPostman/UpdateRoleSuccess.png)
+ 
+ 
  **DELETE role by ID**
 ----
   Deletes role found by ID.
