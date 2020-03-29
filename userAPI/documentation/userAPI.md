@@ -110,7 +110,7 @@
    `password=[string]`
    `avatarUrl=[string]`
 
-  **Optional: **
+  * **Optional: **
     `role=[Role]`
     `owners=[User[]]`
     `subscribers=[User[]]`
