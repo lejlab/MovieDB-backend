@@ -3,11 +3,9 @@ package com.moviedb.UserPreferences;
 import com.moviedb.UserPreferences.models.Comment;
 import com.moviedb.UserPreferences.models.Review;
 import com.moviedb.UserPreferences.models.Watchlist;
-import com.moviedb.UserPreferences.repositories.CommentsRepository;
-import com.moviedb.UserPreferences.repositories.ReviewsBasicRepository;
-import com.moviedb.UserPreferences.repositories.ReviewsRepository;
-import com.moviedb.UserPreferences.repositories.WatchlistsRepository;
-import org.apache.tomcat.jni.Local;
+import com.moviedb.UserPreferences.reviews.CommentsRepository;
+import com.moviedb.UserPreferences.reviews.ReviewsRepository;
+import com.moviedb.UserPreferences.reviews.WatchlistsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -15,8 +13,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-
-import java.time.LocalDateTime;
 
 @SpringBootApplication
 @EnableEurekaClient

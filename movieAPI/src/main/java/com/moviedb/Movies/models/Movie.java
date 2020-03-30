@@ -39,6 +39,8 @@ public class Movie {
     @PositiveOrZero(message="Box office must be nonnegative")
     private double boxOffice;
 
+
+    @JsonIgnoreProperties(value = "movie", allowSetters = true)
     @OneToMany(targetEntity = GenreMovie.class, mappedBy = "movie", fetch = FetchType.LAZY)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<GenreMovie> genres;

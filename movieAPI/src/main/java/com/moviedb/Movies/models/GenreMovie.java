@@ -21,11 +21,13 @@ public class GenreMovie {
     private Integer id;
 
     @NotNull(message = "Genre must not be empty.")
+    @JsonIgnoreProperties(value = "movies", allowSetters = true)
     @ManyToOne
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
     @NotNull(message = "Movie must not be empty.")
+    @JsonIgnoreProperties(value = "genres", allowSetters = true)
     @ManyToOne
     @JoinColumn(name = "movie_id")
     private Movie movie;

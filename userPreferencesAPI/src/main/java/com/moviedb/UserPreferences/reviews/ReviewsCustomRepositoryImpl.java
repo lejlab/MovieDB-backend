@@ -1,12 +1,14 @@
-package com.moviedb.UserPreferences.repositories;
+package com.moviedb.UserPreferences.reviews;
 
 
 import com.moviedb.UserPreferences.models.Review;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Repository
 public class ReviewsCustomRepositoryImpl implements ReviewsCustomRepository {
     private final ReviewsBasicRepository reviewsBasicRepository;
 

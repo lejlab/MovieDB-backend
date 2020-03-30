@@ -31,6 +31,8 @@ public class Genre {
     @Column(name = "name")
     private String name;
 
+
+    @JsonIgnoreProperties(value = "genre", allowSetters = true)
     @OneToMany(targetEntity = GenreMovie.class, mappedBy = "genre", fetch = FetchType.LAZY)
     private List<GenreMovie> movies;
 

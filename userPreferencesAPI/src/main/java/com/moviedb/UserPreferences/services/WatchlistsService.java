@@ -1,11 +1,12 @@
 package com.moviedb.UserPreferences.services;
 
 import com.moviedb.UserPreferences.models.Watchlist;
-import com.moviedb.UserPreferences.repositories.WatchlistsRepository;
+import com.moviedb.UserPreferences.reviews.WatchlistsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.lang.Integer.parseInt;
 
@@ -23,21 +24,28 @@ public class WatchlistsService {
         }
     }
 
-    public Object findById(String id, String type, String isPublic){
+
+    public Optional<Watchlist> findById(String id){
+        Integer ID = parseInt(id);
+        return watchlistsRepository.findById(ID);
+    }
+
+    public Optional<List<Watchlist>> findByMovieId(String id){
+        Integer ID = parseInt(id);
+        return watchlistsRepository.findByMovieId(ID);
+    }
+
+    public Optional<List<Watchlist>> findByUserId(String id, String isPublic){
         Integer ID = parseInt(id);
 
-        if (type == null){
-            return watchlistsRepository.findById(ID);
-        }
-        else if (type.toLowerCase().equals("movie")){
-            return watchlistsRepository.findByMovieId(ID);
-        }
-        else if (type.equals("user")){
-            if (isPublic.toLowerCase().equals("true")) return watchlistsRepository.findByUserIdPublic(ID);
-            else if (isPublic.toLowerCase().equals("false")) return watchlistsRepository.findByUserIdPrivate(ID);
-            return watchlistsRepository.findByUserId(ID);
-        }
-
-        return null;
+        if (isPublic.toLowerCase().equals("true")) return watchlistsRepository.findByUserIdPublic(ID);
+        else if (isPublic.toLowerCase().equals("false")) return watchlistsRepository.findByUserIdPrivate(ID);
+        return watchlistsRepository.findByUserId(ID);
     }
+
+    public void deleteById(String id) {
+        Integer ID = parseInt(id);
+        watchlistsRepository.deleteById(ID);
+    }
+
 }

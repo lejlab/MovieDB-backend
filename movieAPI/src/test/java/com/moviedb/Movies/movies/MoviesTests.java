@@ -56,14 +56,64 @@ class MoviesTests {
     }
 
     @Test
-    void getMovieById() throws Exception {
-        final Integer dummyMovieId = 35;
+    void getMovieByIdSuccess() throws Exception {
+        final Integer dummyMovieId = 7;
 
         mockMvc.perform(MockMvcRequestBuilders
                 .get(BASE_URL + dummyMovieId)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(dummyMovieId));
+    }
+
+    @Test
+    void getMovieByIdFail() throws Exception {
+        final Integer dummyMovieId = 3579;
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .get(BASE_URL + dummyMovieId)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void deleteMovieByIdSuccess() throws Exception {
+        final Integer dummyMovieId = 7;
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .delete(BASE_URL + dummyMovieId)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void deleteMovieByIdFail() throws Exception {
+        final Integer dummyMovieId = 731;
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .delete(BASE_URL + dummyMovieId)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is5xxServerError());
+    }
+
+    @Test
+    void editMovieByIdSuccess() throws Exception {
+        final Integer dummyMovieId = 9;
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .put(BASE_URL + dummyMovieId)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void editMovieByIdFail() throws Exception {
+        final Integer dummyMovieId = 7331;
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .put(BASE_URL + dummyMovieId)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is5xxServerError());
     }
 
     public static String asJsonString(final Object obj) {

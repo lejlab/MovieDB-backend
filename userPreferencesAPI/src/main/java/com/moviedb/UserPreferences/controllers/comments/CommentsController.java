@@ -1,8 +1,9 @@
 package com.moviedb.UserPreferences.controllers.comments;
 
 import com.moviedb.UserPreferences.controllers.comments.exceptions.CommentNotFoundByIdException;
+import com.moviedb.UserPreferences.controllers.comments.exceptions.CommentNotFoundByMovieIdException;
+import com.moviedb.UserPreferences.controllers.comments.exceptions.CommentNotFoundByUserIdException;
 import com.moviedb.UserPreferences.models.Comment;
-import com.moviedb.UserPreferences.repositories.CommentsRepository;
 import com.moviedb.UserPreferences.services.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,11 +28,23 @@ public class CommentsController {
     }
 
     @GetMapping("/comments/{id}")
-    public Object findById(@PathVariable(value = "id") String id, @RequestParam(required = false) String type){
-        Object result = commentsService.findById(id,type);
-        if(result==null)
-            throw new CommentNotFoundByIdException(id, type);
-        else
-            return result;
+    public Object findById(@PathVariable(value = "id") String id){
+        return commentsService.findById(id).orElseThrow(() -> new CommentNotFoundByIdException(id));
+    }
+
+    @GetMapping("/comments/user/{id}")
+    public Object findByUserId(@PathVariable(value = "id") String id){
+        return commentsService.findByUserId(id).orElseThrow(() -> new CommentNotFoundByUserIdException(id));
+    }
+
+    @GetMapping("/comments/movie/{id}")
+    public Object findByMovieId(@PathVariable(value = "id") String id){
+        return commentsService.findByMovieId(id).orElseThrow(() -> new CommentNotFoundByMovieIdException(id));
+    }
+
+
+    @DeleteMapping("/comments/{id}")
+    public void delete(@PathVariable(value = "id") String id){
+        commentsService.deleteById(id);
     }
 }

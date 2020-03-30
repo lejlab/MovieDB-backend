@@ -20,7 +20,7 @@
   * **Code:** 500 Internal Server Error <br />
 
 * **Sample Success Call:**
-![image info](./MoviesPostman/getMoviesSuccess.png)
+![image info](WatchlistPostman/getMoviesSuccess.png)
 
 **GET movie by ID**
 ----
@@ -52,10 +52,10 @@
     
 * **Sample Call:**
     * **Error:**
-    ![image info](./MoviesPostman/getMovieIdFail.png)
+    ![image info](WatchlistPostman/getMovieIdFail.png)
     
     * **Success:**
-    ![image info](./MoviesPostman/getMovieIdSuccess.png)
+    ![image info](WatchlistPostman/getMovieIdSuccess.png)
 
 **ADD new movie**
 ----
@@ -89,10 +89,10 @@
     
 * **Sample Call:**
   * **Error:**
-  ![image info](./MoviesPostman/addMovieFail.png)
+  ![image info](WatchlistPostman/addMovieFail.png)
   
   * **Success:**
-  ![image info](./MoviesPostman/addMovieSuccess.png)
+  ![image info](WatchlistPostman/addMovieSuccess.png)
   
  **PUT movie**
 ----
@@ -130,10 +130,10 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./MoviesPostman/putMovieSuccess.png)
+  ![image info](WatchlistPostman/putMovieSuccess.png)
   
   * **Error:**
-  ![image info](./MoviesPostman/putMovieFail.png)
+  ![image info](WatchlistPostman/putMovieFail.png)
   
  **DELETE movie by ID**
 ----
@@ -163,7 +163,7 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./MoviesPostman/deleteMovieSuccess.png)
+  ![image info](WatchlistPostman/deleteMovieSuccess.png)
   
 **GET all genres**
 ----
@@ -188,7 +188,7 @@
     **Content:** `{ message : "...", details : "..." }`
 
 * **Sample Call:**
-![image info](./GenresPostman/getGenresSuccess.png)
+![image info](ReviewsPostman/getGenresSuccess.png)
 
 
 **GET genre by ID**
@@ -221,9 +221,9 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./GenresPostman/getGenreIdSuccess.png)
+  ![image info](ReviewsPostman/getGenreIdSuccess.png)
   * **Error:**
-  ![image_info](./GenresPostman/getGenreIdFail.png)
+  ![image_info](ReviewsPostman/getGenreIdFail.png)
   
     
 **ADD new genre**
@@ -256,10 +256,10 @@
     
 * **Sample Call:**
   * **Error:**
-  ![image info](./GenresPostman/addGenreFail.png)
+  ![image info](ReviewsPostman/addGenreFail.png)
   
   * **Success:**
-  ![image info](./GenresPostman/addGenreSuccess.png)
+  ![image info](ReviewsPostman/addGenreSuccess.png)
   
  **PUT genre**
 ----
@@ -295,10 +295,10 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./GenresPostman/putGenreSuccess.png)
+  ![image info](ReviewsPostman/putGenreSuccess.png)
   
   * **Error:**
-  ![image info](./GenresPostman/putGenreFail.png)
+  ![image info](ReviewsPostman/putGenreFail.png)
   
  **DELETE genre by ID**
 ----
@@ -329,9 +329,9 @@
     
 * **Sample Call:**
   * **Success:**
-  ![image info](./GenresPostman/deleteGenreSuccess.png)
+  ![image info](ReviewsPostman/deleteGenreSuccess.png)
   * **Error:**
-  ![image info](./GenresPostman/deleteGenreFail.png)
+  ![image info](ReviewsPostman/deleteGenreFail.png)
   
 **GET all genreMovies**
    ----
@@ -354,7 +354,7 @@
      * **Code:** 500 Internal Server Error <br />
    
    * **Sample Success Call:**
-   ![image info](./GenreMoviesPostman/getGenreMoviesSuccess.png)
+   ![image info](CommentsPostman/getGenreMoviesSuccess.png)
    
    **GET genreMovie by ID**
    ----
@@ -385,10 +385,10 @@
        
    * **Sample Call:**
        * **Error:**
-       ![image info](./GenreMoviesPostman/getGenreMoviesIdFail.png)
+       ![image info](CommentsPostman/getGenreMoviesIdFail.png)
        
        * **Success:**
-       ![image info](./GenreMoviesPostman/getGenreMoviesIdSuccess.png)
+       ![image info](CommentsPostman/getGenreMoviesIdSuccess.png)
        
        
 **GET genreMovie by genre ID**
@@ -420,9 +420,9 @@
     
 * **Sample Call:**
   * **Success:**
-   ![image info](./GenreMoviesPostman/getGenreMovieByGenreIdSuccess.png)
+   ![image info](CommentsPostman/getGenreMovieByGenreIdSuccess.png)
   * **Error:**
-   ![image_info](./GenreMoviesPostman/getGenreMovieByGenreIdFail.png)
+   ![image_info](CommentsPostman/getGenreMovieByGenreIdFail.png)
   
   
 **GET genreMovie by movie ID**
@@ -455,9 +455,9 @@
       
   * **Sample Call:**
     * **Success:**
-    ![image info](./GenreMoviesPostman/getGenreMovieByMovieIdSuccess.png)
+    ![image info](CommentsPostman/getGenreMovieByMovieIdSuccess.png)
     * **Error:**
-    ![image_info](./GenreMoviesPostman/getGenreMovieByMovieIdFail.png)
+    ![image_info](CommentsPostman/getGenreMovieByMovieIdFail.png)
    
    **ADD new genreMovie**
    ----
@@ -486,10 +486,10 @@
        
    * **Sample Call:**
      * **Error:**
-     ![image info](./GenreMoviesPostman/postGenreMovieFail.png)
+     ![image info](CommentsPostman/postGenreMovieFail.png)
      
      * **Success:**
-     ![image info](./GenreMoviesPostman/postGenreMovieSuccess.png)
+     ![image info](CommentsPostman/postGenreMovieSuccess.png)
      
     **DELETE genreMovie by ID**
    ----
@@ -519,6 +519,6 @@
        
    * **Sample Call:**
      * **Error:**
-     ![image info](./GenreMoviesPostman/deleteGenreMoviesIdFail.png)
+     ![image info](CommentsPostman/deleteGenreMoviesIdFail.png)
      * **Success:**
-     ![image info](./GenreMoviesPostman/deleteGenreMoviesIdSuccess.png)
+     ![image info](CommentsPostman/deleteGenreMoviesIdSuccess.png)

@@ -45,6 +45,6 @@ public class GenreMoviesController {
 
     @GetMapping("/genreMovies/movie/{id}")
     public Object findByMovieId(@PathVariable(value = "id") Integer id){
-        return genreMoviesService.getOneByGenreId(id).orElseThrow(() -> new GenreMovieNotFoundByMovieIdException(id));
+        return genreMoviesService.getOneByMovieId(id).orElseThrow(() -> new GenreMovieNotFoundByMovieIdException(id));
     }
 }
