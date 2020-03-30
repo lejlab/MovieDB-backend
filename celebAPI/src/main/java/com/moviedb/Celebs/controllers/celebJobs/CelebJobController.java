@@ -1,11 +1,13 @@
 package com.moviedb.Celebs.controllers.celebJobs;
 
+import com.moviedb.Celebs.controllers.celebJobs.exceptions.CelebJobTypeNotFoundException;
 import com.moviedb.Celebs.controllers.celebJobs.exceptions.CelebJobsNotFoundException;
 import com.moviedb.Celebs.controllers.jobs.exceptions.JobsNotFoundException;
 import com.moviedb.Celebs.models.Celeb;
 import com.moviedb.Celebs.models.CelebJobs;
 import com.moviedb.Celebs.models.Job;
 import com.moviedb.Celebs.services.CelebJobsService;
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.moviedb.Celebs.repositories.CelebJobsRepository;
@@ -34,7 +36,7 @@ public class CelebJobController {
     }
 
     @GetMapping("/celebjobs/list/{id}")
-    public List<CelebJobs> findAllById(@PathVariable(value = "id") String id, @RequestParam String type){
+    public List<CelebJobs> getAllByIdType(@PathVariable(value = "id") String id, @RequestParam String type){
         Integer celebJobId = parseInt(id);
 
         if (type.equals("celeb")){
@@ -44,7 +46,7 @@ public class CelebJobController {
             return celebJobsService.getAllByJobId(celebJobId);
         }
         else {
-            return new ArrayList<CelebJobs>();
+            throw new CelebJobTypeNotFoundException(type);
         }
     }
 

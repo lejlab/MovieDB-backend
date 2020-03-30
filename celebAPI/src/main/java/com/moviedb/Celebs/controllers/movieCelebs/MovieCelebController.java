@@ -2,6 +2,7 @@ package com.moviedb.Celebs.controllers.movieCelebs;
 
 import com.moviedb.Celebs.controllers.celebJobs.exceptions.CelebJobsNotFoundException;
 import com.moviedb.Celebs.controllers.movieCelebs.expceptions.MovieCelebsNotFoundException;
+import com.moviedb.Celebs.controllers.movieCelebs.expceptions.MovieCelebsTypeNotFoundException;
 import com.moviedb.Celebs.models.CelebJobs;
 import com.moviedb.Celebs.models.MovieCeleb;
 import com.moviedb.Celebs.services.MovieCelebService;
@@ -32,7 +33,7 @@ public class MovieCelebController {
     }
 
     @GetMapping("/moviecelebs/list/{id}")
-    public List<MovieCeleb> findAllById(@PathVariable(value = "id") String id, @RequestParam String type){
+    public List<MovieCeleb> getAllByIdType(@PathVariable(value = "id") String id, @RequestParam String type){
         Integer movieCelebId = parseInt(id);
 
         if (type.equals("movie")){
@@ -42,7 +43,7 @@ public class MovieCelebController {
             return movieCelebService.getAllByCelebId(movieCelebId);
         }
         else {
-            return new ArrayList<MovieCeleb>();
+            throw new MovieCelebsTypeNotFoundException(type);
         }
     }
 

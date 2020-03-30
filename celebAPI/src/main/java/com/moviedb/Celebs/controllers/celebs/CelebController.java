@@ -23,11 +23,6 @@ public class CelebController {
     @Autowired
     CelebsRepository celebsRepository;
 
-    @GetMapping("/")
-    public String index(){
-        return ("celebs, celebs/{name}, celebs/{date}, jobs, celebjobs, celebjobs/{id}, moviecelebs, moviecelebs{id}");
-    }
-
     @GetMapping("/celebs")
     public List<Celeb> getAll(){
         return celebsService.getAll();
@@ -39,7 +34,7 @@ public class CelebController {
     }
 
     @GetMapping("/celebs/identification/{something}")
-    public List<Celeb> findAllBySomething(@PathVariable(value = "something") String something, @RequestParam String type) throws ParseException {
+    public List<Celeb> getAllBySomething(@PathVariable(value = "something") String something, @RequestParam String type) throws ParseException {
 
         if (type.equals("name")) {
             return celebsService.getAllByName(something);
