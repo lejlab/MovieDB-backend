@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@RestController
 public class GenreMoviesController {
     @Autowired
     private GenreMoviesService genreMoviesService;
-
-    @Autowired
-    GenreMoviesRepository genreMoviesRepository;
 
     @GetMapping(value = "/genreMovies")
     public List<GenreMovie> getAllGenreMovies(){
