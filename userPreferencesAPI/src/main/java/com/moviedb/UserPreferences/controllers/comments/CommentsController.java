@@ -1,7 +1,9 @@
-package com.moviedb.UserPreferences.controllers;
+package com.moviedb.UserPreferences.controllers.comments;
 
+import com.moviedb.UserPreferences.controllers.comments.exceptions.CommentNotFoundByIdException;
 import com.moviedb.UserPreferences.models.Comment;
 import com.moviedb.UserPreferences.repositories.CommentsRepository;
+import com.moviedb.UserPreferences.services.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +14,7 @@ import static java.lang.Integer.parseInt;
 @RestController
 public class CommentsController {
     @Autowired
-    CommentsRepository commentsRepository;
+    CommentsService commentsService;
 
     @GetMapping("/")
     public String index(){
@@ -21,23 +23,15 @@ public class CommentsController {
 
     @GetMapping("/comments")
     public List<Comment> find(){
-        return commentsRepository.findAll();
+        return commentsService.findAll();
     }
 
     @GetMapping("/comments/{id}")
     public Object findById(@PathVariable(value = "id") String id, @RequestParam(required = false) String type){
-        Integer ID = parseInt(id);
-
-        if (type == null){
-            return commentsRepository.findById(ID);
-        }
-        else if (type.toLowerCase().equals("movie")){
-            return commentsRepository.findByMovieId(ID);
-        }
-        else if (type.toLowerCase().equals("user")){
-            return commentsRepository.findByUserId(ID);
-        }
-
-        return null;
+        Object result = commentsService.findById(id,type);
+        if(result==null)
+            throw new CommentNotFoundByIdException(id, type);
+        else
+            return result;
     }
 }

@@ -1,24 +1,20 @@
-package com.moviedb.UserPreferences.controllers;
+package com.moviedb.UserPreferences.services;
 
 import com.moviedb.UserPreferences.models.Review;
 import com.moviedb.UserPreferences.repositories.ReviewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
-@RestController
-public class ReviewsController {
+@Service
+public class ReviewsService {
     @Autowired
     ReviewsRepository reviewsRepository;
 
-    @GetMapping("/reviews")
-    public List<Review> find(@RequestParam(required = false) String top, @RequestParam(required = false) String orderBy){
+    public List<Review> findAll(String top, String orderBy){
         if (top != null) {
             Integer N = parseInt(top);
 
@@ -37,8 +33,7 @@ public class ReviewsController {
         return reviewsRepository.findAll();
     }
 
-    @GetMapping("/reviews/{id}")
-    public Object findById(@PathVariable(value = "id") String id, @RequestParam(required = false) String type){
+    public Object findById(String id, String type){
         Integer ID = parseInt(id);
 
         if (type == null){
