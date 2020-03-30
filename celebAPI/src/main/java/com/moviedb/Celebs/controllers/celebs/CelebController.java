@@ -1,6 +1,7 @@
 package com.moviedb.Celebs.controllers.celebs;
 
 import com.moviedb.Celebs.controllers.celebs.exceptions.CelebNotFoundException;
+import com.moviedb.Celebs.controllers.celebs.exceptions.CelebTypeNotFoundException;
 import com.moviedb.Celebs.models.Celeb;
 import com.moviedb.Celebs.models.CelebJobs;
 import com.moviedb.Celebs.services.CelebsService;
@@ -43,7 +44,7 @@ public class CelebController {
             return celebsService.getAllByDateOfBirth(something);
         }
         else {
-            return new ArrayList<Celeb>();
+            throw new CelebTypeNotFoundException(type);
         }
     }
 

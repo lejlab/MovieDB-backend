@@ -1,133 +1,6 @@
-**Show Celebs**
+**GET all jobs**
 ----
-  Returns json data about all celebs.
-
-* **URL**
-
-  /celebs
-
-* **Method:**
-
-  `GET`
-  
-*  **URL Params**
-
-   **Required:**
- 
-   None
-
-* **Data Params**
-
-  None
-
-* **Success Response:**
-
-  * **Code:** 200 <br />
-    **Content:** `{ id : 2, firstName : "Brad", lastName : "Pitt" }`
- 
-* **Error Response:**
-
- Not tested
-
-* **Sample Call:**
-
- @GetMapping("/celebs")
-    public List<Celeb> find() {
-        return celebsRepository.findAll();
-    }
- 
- 
- 
- 
- 
- 
- **Show Celeb**
-----
-  Returns json data about a single celeb.
-
-* **URL**
-
-  /celebs/:name
-
-* **Method:**
-
-  `GET`
-  
-*  **URL Params**
-
-   **Required:**
- 
-   name=[integer]
-
-* **Data Params**
-
-  None
-
-* **Success Response:**
-
-  Not tested
- 
-* **Error Response:**
-
-  Not tested
-
-* **Sample Call:**
-
-  @GetMapping("/celebs/{name}")
-    public List<Celeb> find(@PathVariable("name") String name) {
-        return celebsRepository.findByName(name);
-    }
- 
- 
- 
- 
- 
- **Show Celeb**
-----
-  Returns json data about a single celeb.
-
-* **URL**
-
-  /celebs/:date
-
-* **Method:**
-
-  `GET`
-  
-*  **URL Params**
-
-   **Required:**
- 
-   date=[Date]
-
-* **Data Params**
-
-  None
-
-* **Success Response:**
-
-  Not tested
- 
-* **Error Response:**
-
-  Not tested
-
-* **Sample Call:**
-
- @GetMapping("/celebs/{date}")
-    public List<Celeb> find(@PathVariable("name") Date date) {
-        return celebsRepository.findByDateOfBirth(date);
-    }
-  
-  
-  
-  
- 
- 
- 
-**Show Jobs**
-----
-  Returns json data about all jobs.
+  Returns json array data about all jobs records in database.
 
 * **URL**
 
@@ -149,29 +22,48 @@
 
 * **Success Response:**
 
-  Not tested
+  * **Code:** 200 <br />
+    **Content:** `[
+                      {
+                          "id": 1,
+                          "title": "Actor",
+                          "celebs": [
+                              {
+                                  "id": 1,
+                                  "celeb": {
+                                      "id": 1,
+                                      "firstName": "Nebojsa",
+                                      "lastName": "Glogovac",
+                                      "dateOfBirth": "1969-08-30T00:00:00.000+0000",
+                                      "movies": [
+                                          {
+                                              "id": 1
+                                          }
+                                      ]
+                                  }
+                              },
+                              {
+                                  "id": 2,
+                                  "celeb": {
+                              ...    
+`
  
 * **Error Response:**
 
-  Not tested
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "...", details : "..." }`
 
 * **Sample Call:**
 
-  @GetMapping("/jobs")
-    public List<Job> find() {
-        return jobsRepository.findAll();
-    }
- 
-
+  ![image info](./jobPostman/getAll.png)
   
-  
-**Show celeb_jobs**
+**GET job by ID**
 ----
-  Returns json data about all celeb_jobs.
+  Returns json data about single job found by ID.
 
 * **URL**
 
-  /celeb_jobs
+  /jobs/:id
 
 * **Method:**
 
@@ -181,7 +73,7 @@
 
    **Required:**
  
-   None
+   `id=[integer]`
 
 * **Data Params**
 
@@ -189,144 +81,66 @@
 
 * **Success Response:**
 
-  Not tested
+  * **Code:** 200 <br />
+    **Content:** `{
+                      "id": 3,
+                      "title": "Producer",
+                      "celebs": [
+                          {
+                              "id": 8,
+                              "celeb": {
+                                  "id": 2,
+                                  "firstName": "Brad",
+                                  "lastName": "Pitt",
+                                  "dateOfBirth": "1963-12-18T00:00:00.000+0000",
+                                  "movies": [
+                                      {
+                                          "id": 2
+                                      },
+                                      {
+                                          "id": 8
+                                      }
+                                  ]
+                              }
+                          },
+                          {
+                              "id": 10,
+                              "celeb": {
+                                  "id":
+                          ...        
+`
  
 * **Error Response:**
-
-  Not tested
-
-* **Sample Call:**
-
-  @GetMapping("/celebjobs")
-    public List<CelebJobs> find() {
-        return celebJobsRepository.findAll();
-    }
-
-
- 
-
-  
-  
-**Show celeb_jobs**
-----
-  Returns json data about celeb_jobs with some celebID.
-
-* **URL**
-
-  /celeb_jobs/:id?type="celeb"
-
-* **Method:**
-
-  `GET`
-  
-*  **URL Params**
-
-   **Required:**
- 
-   id=[integer]
-
-* **Data Params**
-
-  type="celeb"
-
-* **Success Response:**
-
-  Not tested
- 
-* **Error Response:**
-
-  Not tested
+  * **Code:** 404 Not Found Error <br />
+      **Content:** `{ message : "Could not find job with id = :id" }`  
+    
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "...", details : "..." }`
 
 * **Sample Call:**
-
-  @GetMapping("/celebjobs/{id}")
-    public List<CelebJobs> findByUserId(@PathVariable(value = "id") String id, @RequestParam String type){
-        Integer celebJobId = parseInt(id);
-
-        if (type.equals("celeb")){
-            return celebJobsRepository.findByCelebId(celebJobId);
-        }
-        else if (type.equals("job")) {
-            return celebJobsRepository.findByJobId(celebJobId);
-        }
-        else {
-            return new ArrayList<CelebJobs>();
-        }
-    }
+  * **Success:**
+  ![image info](./jobPostman/getOneById.png)
+  * **Error:**
+  ![image info](./jobPostman/getOneByIdNF.png)
     
 
-
-  
-  
-**Show celeb_jobs**
+**GET all celebs**
 ----
-  Returns json data about celeb_jobs with some jobID.
+  Returns json array data about all celebs records in database.
 
 * **URL**
 
-  /celeb_jobs/:id?type="job"
+  /celebs
 
 * **Method:**
 
   `GET`
   
-*  **URL Params**
+* **URL Params**
 
-   **Required:**
+  **Required:**
  
-   id=[integer]
-
-* **Data Params**
-
-  type="job"
-
-* **Success Response:**
-
-  Not tested
- 
-* **Error Response:**
-
-  Not tested
-
-* **Sample Call:**
-
-  @GetMapping("/celebjobs/{id}")
-    public List<CelebJobs> findByUserId(@PathVariable(value = "id") String id, @RequestParam String type){
-        Integer celebJobId = parseInt(id);
-
-        if (type.equals("celeb")){
-            return celebJobsRepository.findByCelebId(celebJobId);
-        }
-        else if (type.equals("job")) {
-            return celebJobsRepository.findByJobId(celebJobId);
-        }
-        else {
-            return new ArrayList<CelebJobs>();
-        }
-    }
-  
-
-  
-    
-
- 
-**Show movie_celebs**
-----
-  Returns json data about all movie_celebs.
-
-* **URL**
-
-  /movie_celebs
-
-* **Method:**
-
-  `GET`
-  
-*  **URL Params**
-
-   **Required:**
- 
-   None
+  None
 
 * **Data Params**
 
@@ -334,76 +148,52 @@
 
 * **Success Response:**
 
-  Not tested
+  * **Code:** 200 <br />
+    **Content:** `[
+                      {
+                          "id": 1,
+                          "firstName": "Nebojsa",
+                          "lastName": "Glogovac",
+                          "dateOfBirth": "1969-08-30T00:00:00.000+0000",
+                          "jobs": [
+                              {
+                                  "id": 1,
+                                  "job": {
+                                      "id": 1,
+                                      "title": "Actor"
+                                  }
+                              }
+                          ],
+                          "movies": [
+                              {
+                                  "id": 1
+                              }
+                          ]
+                      },
+                      {
+                          "id": 2,
+                          "firstName": "Brad",
+                          "lastName": "Pitt",
+                      ...    
+`
  
 * **Error Response:**
-
-  Not tested
-
-* **Sample Call:**
-
-  @GetMapping("/moviecelebs")
-    public List<MovieCeleb> find(){
-        return movieCelebsRepository.findAll();
-    }
-   
-  
- 
- 
-**Show movie_celebs**
-----
-  Returns json data about movie_celebs with some celebID.
-
-* **URL**
-
-  /movie_celebs/:id?type="celeb"
-
-* **Method:**
-
-  `GET`
-  
-*  **URL Params**
-
-   **Required:**
- 
-   id=[integer]
-
-* **Data Params**
-
-  type="celeb"
-
-* **Success Response:**
-
-  Not tested
- 
-* **Error Response:**
-
-  Not tested
-
-* **Sample Call:**
-
-   @GetMapping("/moviecelebs/{id}")
-    public List<MovieCeleb> findByUserId(@PathVariable(value = "id") String id, @RequestParam String type) {
-        Integer movieCelebId = parseInt(id);
-
-        if (type.equals("celeb")) {
-            return movieCelebsRepository.findByCelebId(movieCelebId);
-        } else if (type.equals("movie")) {
-            return movieCelebsRepository.findByMovieId(movieCelebId);
-        } else {
-            return new ArrayList<MovieCeleb>();
-        }
-    }
     
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "...", details : "..." }`
+
+* **Sample Call:**
+    
+    ![image info](./celebPostman/getAll.png)
 
  
-**Show movie_celebs**
+ **GET celeb by ID**
 ----
-  Returns json data about movie_celebs with some movieID.
+  Returns json data about single celeb found by ID.
 
 * **URL**
 
-  /movie_celebs/:id?type="movie"
+  /celebs/:id
 
 * **Method:**
 
@@ -413,31 +203,718 @@
 
    **Required:**
  
-   id=[integer]
+   `id=[integer]`
 
 * **Data Params**
 
-  type="movie"
+  None
 
 * **Success Response:**
 
-  Not tested
+  * **Code:** 200 <br />
+    **Content:** `{
+                      "id": 2,
+                      "firstName": "Brad",
+                      "lastName": "Pitt",
+                      "dateOfBirth": "1963-12-18T00:00:00.000+0000",
+                      "jobs": [
+                          {
+                              "id": 2,
+                              "job": {
+                                  "id": 1,
+                                  "title": "Actor"
+                              }
+                          },
+                          {
+                              "id": 8,
+                              "job": {
+                                  "id": 3,
+                                  "title": "Producer"
+                              }
+                          }
+                      ],
+                      "movies": [
+                          {
+                              "id": 2
+                          },
+                          {
+                              "id": 8
+                          }
+                      ]
+                  }`
  
 * **Error Response:**
 
-  Not tested
+  * **Code:** 404 Not Found Error <br />
+        **Content:** `{ message : "Could not find celeb with id = :id" }`  
+      
+  * **Code:** 500 Internal Server Error <br />
+      **Content:** `{ message : "...", details : "..." }`
 
 * **Sample Call:**
+  * **Success:**
+  ![image info](./celebPostman/getOneById.png)
+  * **Error:**
+  ![image info](./celebPostman/getOneByIdNF.png)  
+  
+  
+ **GET all celeb by name**
+----
+  Returns json array data about all celeb records with some name in database.
 
-   @GetMapping("/moviecelebs/{id}")
-    public List<MovieCeleb> findByUserId(@PathVariable(value = "id") String id, @RequestParam String type) {
-        Integer movieCelebId = parseInt(id);
+* **URL**
 
-        if (type.equals("celeb")) {
-            return movieCelebsRepository.findByCelebId(movieCelebId);
-        } else if (type.equals("movie")) {
-            return movieCelebsRepository.findByMovieId(movieCelebId);
-        } else {
-            return new ArrayList<MovieCeleb>();
-        }
-    }    
+  /celebs/identification/:name?type=name
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `name=[string]`
+
+* **Data Params**
+
+  `type=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+      **Content:** `[
+                        {
+                            "id": 2,
+                            "firstName": "Brad",
+                            "lastName": "Pitt",
+                            "dateOfBirth": "1963-12-18T00:00:00.000+0000",
+                            "jobs": [
+                                {
+                                    "id": 2,
+                                    "job": {
+                                        "id": 1,
+                                        "title": "Actor"
+                                    }
+                                },
+                                {
+                                    "id": 8,
+                                    "job": {
+                                        "id": 3,
+                                        "title": "Producer"
+                                    }
+                                }
+                            ],
+                            "movies": [
+                                {
+                                    "id": 2
+                                },
+                                {
+                                    "id": 8
+                                }
+                            ]
+                        }
+                    ]`
+ 
+* **Error Response:**
+    
+  * **Code:** 404 Not Found Error <br />
+        **Content:** `{ message : "Could not find celeb with type = type" }`  
+      
+  * **Code:** 500 Internal Server Error <br />
+      **Content:** `{ message : "...", details : "..." }`
+
+
+* **Sample Call:**
+  * **Success:**
+  ![image info](./celebPostman/getAllbySomethingName.png)
+  * **Error:**
+  ![image info](./celebPostman/getAllbySomethingTypeNF.png)
+  
+**GET all celeb by date of birth**
+----
+  Returns json array data about all celeb records with some date of birth in database.
+
+* **URL**
+
+  /celebs/identification/:date?type=date
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `date=[string]`
+
+* **Data Params**
+
+  `type=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+      **Content:** `[
+                        {
+                            "id": 1,
+                            "firstName": "Nebojsa",
+                            "lastName": "Glogovac",
+                            "dateOfBirth": "1969-08-30T00:00:00.000+0000",
+                            "jobs": [
+                                {
+                                    "id": 1,
+                                    "job": {
+                                        "id": 1,
+                                        "title": "Actor"
+                                    }
+                                }
+                            ],
+                            "movies": [
+                                {
+                                    "id": 1
+                                }
+                            ]
+                        }
+                    ]`
+ 
+* **Error Response:**
+    
+  * **Code:** 404 Not Found Error <br />
+        **Content:** `{ message : "Could not find celeb with type = type" }`  
+      
+  * **Code:** 500 Internal Server Error <br />
+      **Content:** `{ message : "...", details : "..." }`
+
+
+* **Sample Call:**
+  * **Success:**
+  ![image info](./celebPostman/getAllbySomethingDate.png)
+  * **Error:**
+  ![image info](./celebPostman/getAllbySomethingTypeNF.png)
+     
+**GET all celeb jobs**
+----
+  Returns json array data about all celeb jobs records in database.
+
+* **URL**
+
+  /celebjobs
+
+* **Method:**
+
+  `GET`
+  
+* **URL Params**
+
+  **Required:**
+ 
+  None
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `[
+                      {
+                          "id": 1,
+                          "job": {
+                              "id": 1,
+                              "title": "Actor"
+                          },
+                          "celeb": {
+                              "id": 1,
+                              "firstName": "Nebojsa",
+                              "lastName": "Glogovac",
+                              "dateOfBirth": "1969-08-30T00:00:00.000+0000",
+                              "movies": [
+                                  {
+                                      "id": 1
+                                  }
+                              ]
+                          }
+                      },
+                      {
+                          "id": 2,
+                          "job": {     
+                      ...
+    `
+ 
+* **Error Response:**
+    
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "...", details : "..." }`
+
+* **Sample Call:**
+    
+    ![image info](./CelebJobPostman/getAll.png)  
+
+**GET celeb by ID**
+----
+  Returns json data about single celeb job found by ID.
+
+* **URL**
+
+  /celebjobs/:id
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{
+                     "id": 2,
+                     "firstName": "Brad",
+                     "lastName": "Pitt",
+                     "dateOfBirth": "1963-12-18T00:00:00.000+0000",
+                     "jobs": [
+                         {
+                             "id": 2,
+                             "job": {
+                                 "id": 1,
+                                 "title": "Actor"
+                             }
+                         },
+                         {
+                             "id": 8,
+                             "job": {
+                                 "id": 3,
+                                 "title": "Producer"
+                             }
+                         }
+                     ],
+                     "movies": [
+                         {
+                             "id": 2
+                         },
+                         {
+                             "id": 8
+                         }
+                     ]
+                 }
+  `
+ 
+* **Error Response:**
+
+  * **Code:** 404 Not Found Error <br />
+        **Content:** `{ message : "Could not find celeb job with id = :id" }`  
+      
+  * **Code:** 500 Internal Server Error <br />
+      **Content:** `{ message : "...", details : "..." }`
+
+* **Sample Call:**
+  * **Success:**
+  ![image info](./CelebJobPostman/getOneById.png)
+  * **Error:**
+  ![image info](./CelebJobPostman/getOneByIdNF.png)  
+  
+**GET all celeb jobs by celebId**
+----
+  Returns json array data about all celeb job records with some celebId in database.
+
+* **URL**
+
+  /celebjobs/list/:id?type=celeb
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Data Params**
+
+  `type=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+      **Content:** `[
+                        {
+                            "id": 6,
+                            "job": {
+                                "id": 2,
+                                "title": "Director"
+                            },
+                            "celeb": {
+                                "id": 6,
+                                "firstName": "Frank",
+                                "lastName": "Darabont",
+                                "dateOfBirth": "1959-01-28T00:00:00.000+0000",
+                                "movies": [
+                                    {
+                                        "id": 6
+                                    },
+                                    {
+                                        "id": 7
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 7,
+      `
+ 
+* **Error Response:**
+    
+  * **Code:** 404 Not Found Error <br />
+        **Content:** `{ message : "Could not find celeb job with type = type" }`  
+      
+  * **Code:** 500 Internal Server Error <br />
+      **Content:** `{ message : "...", details : "..." }`
+
+
+* **Sample Call:**
+  * **Success:**
+  ![image info](./CelebJobPostman/getAllbyIdTypeCeleb.png)
+  * **Error:**
+  ![image info](./CelebJobPostman/getAllbyIdTypeTypeNF.png)
+
+**GET all celeb jobs by jobId**
+----
+  Returns json array data about all celeb job records with some jobId in database.
+
+* **URL**
+
+  /celebjobs/list/:id?type=job
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Data Params**
+
+  `type=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+      **Content:** `[
+                        {
+                            "id": 7,
+                            "job": {
+                                "id": 3,
+                                "title": "Producer"
+                            },
+                            "celeb": {
+                                "id": 6,
+                                "firstName": "Frank",
+                                "lastName": "Darabont",
+                                "dateOfBirth": "1959-01-28T00:00:00.000+0000",
+                                "movies": [
+                                    {
+                                        "id": 6
+                                    },
+                                    {
+                                        "id": 7
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 8,
+                        ...    
+      `
+ 
+* **Error Response:**
+    
+  * **Code:** 404 Not Found Error <br />
+        **Content:** `{ message : "Could not find celeb job with type = type" }`  
+      
+  * **Code:** 500 Internal Server Error <br />
+      **Content:** `{ message : "...", details : "..." }`
+
+
+* **Sample Call:**
+  * **Success:**
+  ![image info](./CelebJobPostman/getAllbyIdTypeJob.png)
+  * **Error:**
+  ![image info](./CelebJobPostman/getAllbyIdTypeTypeNF.png)
+
+**GET all movie celebs**
+----
+  Returns json array data about all celeb jobs records in database.
+
+* **URL**
+
+  /moviecelebs
+
+* **Method:**
+
+  `GET`
+  
+* **URL Params**
+
+  **Required:**
+ 
+  None
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `[
+                      {
+                          "id": 1,
+                          "celeb": {
+                              "id": 1,
+                              "firstName": "Nebojsa",
+                              "lastName": "Glogovac",
+                              "dateOfBirth": "1969-08-30T00:00:00.000+0000",
+                              "jobs": [
+                                  {
+                                      "id": 1,
+                                      "job": {
+                                          "id": 1,
+                                          "title": "Actor"
+                                      }
+                                  }
+                              ]
+                          },
+                          "movieId": 1
+                      },
+                      {
+                          "id": 2,
+                 ...
+    `
+ 
+* **Error Response:**
+    
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ message : "...", details : "..." }`
+
+* **Sample Call:**
+    
+    ![image info](./MovieCelebPostman/getAll.png)  
+
+**GET movie celeb by ID**
+----
+  Returns json data about single movie celeb found by ID.
+
+* **URL**
+
+  /moviecelebs/:id
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{
+                      "id": 5,
+                      "celeb": {
+                          "id": 5,
+                          "firstName": "Tim",
+                          "lastName": "Robbins",
+                          "dateOfBirth": "1958-10-16T00:00:00.000+0000",
+                          "jobs": [
+                              {
+                                  "id": 5,
+                                  "job": {
+                                      "id": 1,
+                                      "title": "Actor"
+                                  }
+                              },
+                              {
+                                  "id": 12,
+                                  "job": {
+                                      "id": 2,
+                                      "title": "Director"
+                                  }
+                              },
+                              {
+                                  "id": 13,
+                                  "job": {
+                                      "id": 3,
+                                      "title": "Producer"
+                                  }
+                              }
+                          ]
+                      },
+                      "movieId": 1
+                  }
+  `
+ 
+* **Error Response:**
+
+  * **Code:** 404 Not Found Error <br />
+        **Content:** `{ message : "Could not find movie celeb with id = :id" }`  
+      
+  * **Code:** 500 Internal Server Error <br />
+      **Content:** `{ message : "...", details : "..." }`
+
+* **Sample Call:**
+  * **Success:**
+  ![image info](./MovieCelebPostman/getOneById.png)
+  * **Error:**
+  ![image info](./MovieCelebPostman/getOneByIdNF.png)  
+  
+**GET all movie celebs by celebId**
+----
+  Returns json array data about all movie celebs records with some celebId in database.
+
+* **URL**
+
+  /moviecelebs/list/:id?type=celeb
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Data Params**
+
+  `type=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+      **Content:** `
+      [
+          {
+              "id": 1,
+              "celeb": {
+                  "id": 1,
+                  "firstName": "Nebojsa",
+                  "lastName": "Glogovac",
+                  "dateOfBirth": "1969-08-30T00:00:00.000+0000",
+                  "jobs": [
+                      {
+                          "id": 1,
+                          "job": {
+                              "id": 1,
+                              "title": "Actor"
+                          }
+                      }
+                  ]
+              },
+              "movieId": 1
+          }
+      ]
+      `
+ 
+* **Error Response:**
+    
+  * **Code:** 404 Not Found Error <br />
+        **Content:** `{ message : "Could not find movie celeb with type = type" }`  
+      
+  * **Code:** 500 Internal Server Error <br />
+      **Content:** `{ message : "...", details : "..." }`
+
+
+* **Sample Call:**
+  * **Success:**
+  ![image info](./MovieCelebPostman/getAllbyIdTypeCeleb.png)
+  * **Error:**
+  ![image info](./MovieCelebPostman/getAllbyIdTypeTypeNF.png)
+
+**GET all movie celebs by movieId**
+----
+  Returns json array data about all movie celebs records with some movieId in database.
+
+* **URL**
+
+  /moviecelebs/list/:id?type=movie
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Data Params**
+
+  `type=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+      **Content:** `[
+                        {
+                            "id": 1,
+                            "celeb": {
+                                "id": 1,
+                                "firstName": "Nebojsa",
+                                "lastName": "Glogovac",
+                                "dateOfBirth": "1969-08-30T00:00:00.000+0000",
+                                "jobs": [
+                                    {
+                                        "id": 1,
+                                        "job": {
+                                            "id": 1,
+                                            "title": "Actor"
+                                        }
+                                    }
+                                ]
+                            },
+                            "movieId": 1
+                        },
+                        {
+                            "id": 2,
+                   ...    
+      `
+ 
+* **Error Response:**
+    
+  * **Code:** 404 Not Found Error <br />
+        **Content:** `{ message : "Could not find movie celeb with type = type" }`  
+      
+  * **Code:** 500 Internal Server Error <br />
+      **Content:** `{ message : "...", details : "..." }`
+
+
+* **Sample Call:**
+  * **Success:**
+  ![image info](./MovieCelebPostman/getAllbyIdTypeMovie.png)
+  * **Error:**
+  ![image info](./MovieCelebPostman/getAllbyIdTypeTypeNF.png)
