@@ -18,7 +18,6 @@
 * **Error Response:**
   
   * **Code:** 500 Internal Server Error <br />
-    **Content:** `{ message : "...", details : "..." }`
 
 * **Sample Success Call:**
 ![image info](./MoviesPostman/getMoviesSuccess.png)
@@ -48,7 +47,7 @@
  
 * **Error Response:**
 
-  * **Code:** 500 Internal Server Error <br />
+  * **Code:** 404 Not Found Error <br />
     **Content:** `{ message : "Could not find movie with ID = :id." }`
     
 * **Sample Call:**
@@ -95,7 +94,7 @@
   * **Success:**
   ![image info](./MoviesPostman/addMovieSuccess.png)
   
-  **EDIT existing user**
+ **PUT movie**
 ----
   Returns json data about a single movie edited by API call.
 
@@ -161,13 +160,10 @@
 * **Error Response:**
 
   * **Code:** 500 Internal Server Error <br />
-    **Content:** `{ message : "Could not find movie with ID = :id." }`
     
 * **Sample Call:**
   * **Success:**
   ![image info](./MoviesPostman/deleteMovieSuccess.png)
-  * **Error:**
-  ![image info](./MoviesPostman/deleteMovieFail.png)
   
 **GET all genres**
 ----
@@ -220,7 +216,7 @@
  
 * **Error Response:**
 
-  * **Code:** 500 Internal Server Error <br />
+  * **Code:** 404 Not Found Error <br />
     **Content:** `{ message : "Could not find genre with ID = :id." }`
     
 * **Sample Call:**
@@ -231,7 +227,7 @@
   
 **ADD new genre**
 ----
-  Returns json data about a single genre added by API call.
+  Adds new genre by API call.
 
 * **URL**
 
@@ -264,7 +260,7 @@
   * **Success:**
   ![image info](./GenresPostman/addGenreSuccess.png)
   
-  **EDIT existing genre**
+ **PUT genre**
 ----
   Returns json data about a single genre edited by API call.
 

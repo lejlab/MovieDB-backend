@@ -1,50 +1,41 @@
 package com.moviedb.Movies.controllers.genres;
 
 import com.moviedb.Movies.controllers.genres.exceptions.GenreNotFoundException;
-import com.moviedb.Movies.controllers.movies.exceptions.MovieNotFoundException;
 import com.moviedb.Movies.models.Genre;
-import com.moviedb.Movies.repositories.GenresRepository;
+import com.moviedb.Movies.models.Movie;
+import com.moviedb.Movies.services.GenresService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
 public class GenresController {
     @Autowired
-    GenresRepository genresRepository;
+    GenresService genresService;
 
     @GetMapping("/genres")
-    public List<Genre> find(){
-        return genresRepository.findAll();
+    public List<Genre> getAllGenres(){
+        return genresService.getAllGenres();
     }
 
     @GetMapping("/genres/{id}")
     public Genre findById(@PathVariable("id") Integer id){
-        return genresRepository.findById(id).orElseThrow(() -> new GenreNotFoundException(id));
+        return genresService.findGenreById(id).orElseThrow(() -> new GenreNotFoundException(id));
     }
 
     @PostMapping("/genres")
     public Genre newGenre(@RequestBody Genre newGenre) {
-        return genresRepository.save(newGenre);
+        return genresService.addNewGenre(newGenre);
     }
 
     @DeleteMapping("/genres/{id}")
-    public void deleteGenre(@PathVariable Integer id){ genresRepository.deleteById(id);
+    public void deleteGenre(@PathVariable Integer id){ genresService.deleteGenreById(id);
     }
 
     @PutMapping("/genres/{id}")
     public Genre editGenre(@RequestBody Genre newData, @PathVariable("id") Integer id) {
-        return genresRepository.findById(id)
-                .map(genre -> {
-                    genre.setName(newData.getName());
-                    genre.setMovies(newData.getMovies());
-                    System.out.println(genre.toString());
-                    return genresRepository.save(genre);
-                }).orElseGet(() -> genresRepository.save(newData));
+        return genresService.editGenreById(newData, id);
     }
-
 }

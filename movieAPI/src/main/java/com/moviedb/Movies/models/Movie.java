@@ -6,7 +6,6 @@ import org.hibernate.annotations.FetchMode;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -42,7 +41,6 @@ public class Movie {
 
     @OneToMany(targetEntity = GenreMovie.class, mappedBy = "movie", fetch = FetchType.LAZY)
     @Fetch(value = FetchMode.SUBSELECT)
-    @JsonIgnoreProperties(value = "movie", allowSetters = true)
     private List<GenreMovie> genres;
 
 
@@ -81,6 +79,7 @@ public class Movie {
     public void setGenres(List<GenreMovie> genres) {
         this.genres = genres;
     }
+
 
     @Override
     public String toString(){

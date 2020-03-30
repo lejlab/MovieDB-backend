@@ -1,4 +1,4 @@
-package com.moviedb.Movies.models.errors;
+package com.moviedb.UserPreferences.models.errors;
 
 import org.springframework.http.HttpStatus;
 
