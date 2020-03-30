@@ -5,8 +5,6 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -34,7 +32,6 @@ public class Genre {
     private String name;
 
     @OneToMany(targetEntity = GenreMovie.class, mappedBy = "genre", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = "ownerUser", allowSetters = true)
     private List<GenreMovie> movies;
 
 

@@ -38,7 +38,7 @@ class GenreMoviesTests {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
-
+/*
     @Test
     void addNewGenreMovie() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
@@ -47,7 +47,7 @@ class GenreMoviesTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is5xxServerError());
-    }
+    }*/
 
     public static String asJsonString(final Object obj) {
         try {

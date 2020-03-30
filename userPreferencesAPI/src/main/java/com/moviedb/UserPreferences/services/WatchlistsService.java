@@ -1,24 +1,21 @@
-package com.moviedb.UserPreferences.controllers;
+package com.moviedb.UserPreferences.services;
 
 import com.moviedb.UserPreferences.models.Watchlist;
 import com.moviedb.UserPreferences.repositories.WatchlistsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
-@RestController
-public class WatchlistsController {
+@Service
+public class WatchlistsService {
+
     @Autowired
     WatchlistsRepository watchlistsRepository;
 
-    @GetMapping("/watchlists")
-    public List<Watchlist> find(@RequestParam(required = false) String isPublic){
+    public List<Watchlist> findAll(String isPublic){
         if (isPublic == null) return watchlistsRepository.findAll();
         else {
             if (isPublic.toLowerCase().equals("true")) return watchlistsRepository.findAllPublic();
@@ -26,8 +23,7 @@ public class WatchlistsController {
         }
     }
 
-    @GetMapping("/watchlists/{id}")
-    public Object findById(@PathVariable(value = "id") String id, @RequestParam(required = false) String type, @RequestParam(required = false) String isPublic){
+    public Object findById(String id, String type, String isPublic){
         Integer ID = parseInt(id);
 
         if (type == null){
