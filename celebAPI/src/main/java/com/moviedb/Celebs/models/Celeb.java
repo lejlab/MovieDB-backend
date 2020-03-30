@@ -1,5 +1,6 @@
 package com.moviedb.Celebs.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -20,6 +21,11 @@ public class Celeb {
         this.dateOfBirth = date_of_birth;
     }
 
+    public Celeb(@NotNull(message = "First name must not be empty.") @Size(max = 2, message = "First name must not be longer than 30 characters.") String first_name, @NotNull(message = "Last name must not be empty.") @Size(max = 2, message = "Last name must not be longer than 30 characters.") String last_name) {
+        this.firstName = first_name;
+        this.lastName = last_name;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "celeb_id")
@@ -35,6 +41,7 @@ public class Celeb {
     @Column(name = "last_name")
     private String lastName;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     @NotNull(message = "Date of birth must not be empty.")
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
